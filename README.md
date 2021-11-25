@@ -2,24 +2,26 @@
 
 #### hwang.improver@gmail.com
 
-## Frontend 2️⃣ & Backend 3️⃣
-
 ---
 
-### Frontend Skills
+<br>
+
+## Frontend 2️⃣ & Backend 3️⃣
+
+### - Frontend Skills
 
 - React.js
 - Javascript (es6)
 - Jquery
 
-### Backend Skills
+### - Backend Skills
 
 - Nest.js
 - express
 - Node.js
 - php
 
-### Plus Skills
+### - Plus Skills
 
 - Typescript
 - Adobe Photoshop
