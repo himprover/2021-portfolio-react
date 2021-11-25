@@ -6,7 +6,7 @@
 
 <br>
 
-## Frontend 2️⃣ & Backend 3️⃣
+## Frontend 7️⃣ & Backend 3️⃣
 
 ### - Frontend Skills
 
