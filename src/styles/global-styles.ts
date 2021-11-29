@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
+	background: ${({ theme }: { theme: any }) => theme.bgColor};
+	color: ${({ theme }: { theme: any }) => theme.fontColor};
 	font-family: 'IBMPlexSansKR', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
