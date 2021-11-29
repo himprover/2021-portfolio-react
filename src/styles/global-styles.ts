@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
 	font-family: 'IBMPlexSansKR', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-ms-overflow-style: none;
   }
+  ::-webkit-scrollbar { display: none; }
   * {
     box-sizing: border-box;
   }
