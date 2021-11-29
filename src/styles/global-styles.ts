@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
 	padding-left: 5rem;
 	overflow-x:hidden;
-	overflow-y:scroll;
+	overflow-y:hidden;
 	background: ${({ theme }: { theme: any }) => theme.bgColor};
 	color: ${({ theme }: { theme: any }) => theme.fontColor};
 	font-family: 'IBMPlexSansKR', sans-serif;
