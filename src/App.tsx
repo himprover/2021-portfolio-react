@@ -1,25 +1,20 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Main from 'pages/Main';
+import Skills from 'pages/Skills';
+import Reference from 'pages/Reference';
+import Hobby from 'pages/Hobby';
+import Contact from 'pages/Contact';
 
 function App() {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'>
-					Learn React
-				</a>
-			</header>
+		<div>
+			<Main />
+			<Skills />
+			<Reference />
+			<Hobby />
+			<Contact />
 		</div>
 	);
 }
