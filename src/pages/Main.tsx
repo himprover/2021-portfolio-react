@@ -5,7 +5,6 @@ function Main() {
 }
 
 const MainDIV = styled.div`
-	display: flex;
 	min-height: 100vh;
 `;
 

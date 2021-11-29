@@ -11,10 +11,6 @@ import Hobby from 'pages/Hobby';
 import Contact from 'pages/Contact';
 import GlobalStyle from './styles/global-styles';
 
-const Wrap = styled.div`
-	width: 100vw;
-`;
-
 function App() {
 	const [theme, setTheme] = useState('light');
 	const toggleTheme = () => {
@@ -29,14 +25,20 @@ function App() {
 			<Wrap>
 				<GlobalStyle />
 				<Header theme={theme} setTheme={toggleTheme} />
-				<Main />
-				<Skills />
-				<Reference />
-				<Hobby />
-				<Contact />
+				<Content>
+					<Main />
+					<Skills />
+					<Reference />
+					<Hobby />
+					<Contact />
+				</Content>
 			</Wrap>
 		</ThemeProvider>
 	);
 }
+
+const Wrap = styled.div``;
+
+const Content = styled.div``;
 
 export default App;

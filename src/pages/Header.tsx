@@ -15,7 +15,12 @@ function Header({ theme, setTheme }: themeToggle) {
 }
 
 const Menu = styled.div`
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
 	position: fixed;
+	flex-direction: column;
+	justify-content: space-between;
 	top: 0;
 	bottom: 0;
 	left: 0;
