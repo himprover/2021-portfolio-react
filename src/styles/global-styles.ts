@@ -3,6 +3,9 @@ import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
+  html {
+	  font-size:10px;		// for rem style
+  }
   body {
     margin: 0;
 	font-family: 'IBMPlexSansKR', sans-serif;
