@@ -28,8 +28,7 @@ function App() {
 		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 			<Wrap>
 				<GlobalStyle />
-				<button onClick={toggleTheme}>test(dark)</button>
-				<Header />
+				<Header theme={theme} setTheme={toggleTheme} />
 				<Main />
 				<Skills />
 				<Reference />

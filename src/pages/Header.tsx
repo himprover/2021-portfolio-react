@@ -1,4 +1,18 @@
 import styled from 'styled-components';
+import React, { useState } from 'react';
+
+interface themeToggle {
+	theme: string;
+	setTheme: () => void;
+}
+
+function Header({ theme, setTheme }: themeToggle) {
+	return (
+		<Menu>
+			<button onClick={setTheme}>test(dark)</button>
+		</Menu>
+	);
+}
 
 const Menu = styled.div`
 	position: fixed;
@@ -8,10 +22,7 @@ const Menu = styled.div`
 	right: auto;
 	width: 5rem;
 	height: 100vh;
+	background: ${({ theme }: { theme: any }) => theme.headerBgColor};
 `;
-
-function Header() {
-	return <Menu>TEST</Menu>;
-}
 
 export default Header;
