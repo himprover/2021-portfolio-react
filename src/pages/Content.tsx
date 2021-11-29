@@ -4,9 +4,12 @@ import Skills from './Contents/Skills';
 import Reference from './Contents/Reference';
 import Hobby from './Contents/Hobby';
 import Contact from './Contents/Contact';
-import { useEffect, useState, useRef } from 'react';
+
+import { useEffect, useState, useRef, useMemo } from 'react';
+import { throttle } from 'lodash';
 
 function Content() {
+	const contentRef = useRef<HTMLDivElement>(null);
 	const mainRef = useRef<HTMLDivElement>(null);
 	const skillsRef = useRef<HTMLDivElement>(null);
 	const referenceRef = useRef<HTMLDivElement>(null);
@@ -16,30 +19,38 @@ function Content() {
 	const [scrollY, setScrollY] = useState<number>(0);
 	const [section, setSection] = useState<number>(0);
 
-	const scrollHandler = (e: React.UIEvent<HTMLDivElement>) => {
-		let deltaY = scrollY - e.currentTarget.scrollTop;
-		if (deltaY < 0) {
-			console.log('내림');
-			if (section < 4) {
-				setSection((current) => current + 1);
-			}
-			console.log(section);
-		} else {
-			console.log('올림');
-			if (section > 0) {
-				setSection((current) => current - 1);
-			}
-			console.log(section);
-		}
-		setScrollY(e.currentTarget.scrollTop);
-	};
+	const throttleScrollHandler = useMemo(
+		() =>
+			throttle(() => {
+				const pageYOffset: number = contentRef.current?.scrollTop as number;
+				let deltaY = scrollY - pageYOffset;
+				if (deltaY < 0) {
+					console.log('내림');
+					if (section < 4) {
+						setSection((current) => current + 1);
+					}
+				} else {
+					console.log('올림');
+					if (section > 0) {
+						setSection((current) => current - 1);
+					}
+				}
+				console.log(section);
+				setScrollY(pageYOffset);
+				console.log('page ' + pageYOffset);
+				console.log('scroll ' + scrollY);
+			}, 5000),
+		[]
+	);
 
-	// const scrollHandler = (e: React.UIEvent<HTMLDivElement>) => {
-	// 	console.log(e.target);
-	// };
+	useEffect(() => {
+		contentRef.current?.addEventListener('scroll', throttleScrollHandler);
+		return () =>
+			contentRef.current?.removeEventListener('scroll', throttleScrollHandler);
+	}, [throttleScrollHandler]);
 
 	return (
-		<ContentDIV onScroll={scrollHandler}>
+		<ContentDIV ref={contentRef}>
 			<Main ref={mainRef} />
 			<Skills ref={skillsRef} />
 			<Reference ref={referenceRef} />
