@@ -11,7 +11,7 @@ const Menu = styled.div`
 `;
 
 function Header() {
-	return <Menu></Menu>;
+	return <Menu>TEST</Menu>;
 }
 
 export default Header;
