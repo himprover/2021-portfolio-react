@@ -1,10 +1,17 @@
-body {
-	margin: 0;
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  body {
+    margin: 0;
 	font-family: 'IBMPlexSansKR', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
+  }
+  * {
+    box-sizing: border-box;
+  }
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
@@ -61,3 +68,6 @@ code {
 	font-weight: 700;
 	font-style: normal;
 }
+`;
+
+export default GlobalStyle;
