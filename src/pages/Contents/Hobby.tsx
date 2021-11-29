@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { forwardRef } from 'react';
 
-function Hobby() {
-	return <div></div>;
-}
+const Hobby = forwardRef<any>((props, ref) => {
+	return <HobbyDIV ref={ref}></HobbyDIV>;
+});
+
+const HobbyDIV = styled.div``;
 
 export default Hobby;

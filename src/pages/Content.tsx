@@ -4,14 +4,12 @@ import Skills from './Contents/Skills';
 import Reference from './Contents/Reference';
 import Hobby from './Contents/Hobby';
 import Contact from './Contents/Contact';
-import { useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 function Content() {
 	const mainRef = useRef<HTMLDivElement>(null);
 	const skillsRef = useRef<HTMLDivElement>(null);
-	const skillsHandler = () => {
-		skillsRef.current?.scrollIntoView({ behavior: 'smooth' });
-	};
+
 	return (
 		<ContentDIV>
 			<Main ref={mainRef} />
@@ -19,13 +17,13 @@ function Content() {
 			<Reference />
 			<Hobby />
 			<Contact />
-			<button onClick={skillsHandler}></button>
 		</ContentDIV>
 	);
 }
 
 const ContentDIV = styled.div`
 	overflow-y: scroll;
+	height: 100vh;
 	div {
 		height: 100vh;
 		border: 1px solid black;
