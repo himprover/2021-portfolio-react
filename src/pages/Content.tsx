@@ -63,7 +63,7 @@ function Content() {
 const ContentDIV = styled.div`
 	overflow-y: scroll;
 	height: 100vh;
-	div {
+	& > div {
 		height: 100vh;
 		position: relative;
 	}
