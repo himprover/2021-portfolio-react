@@ -1,13 +1,25 @@
+const redColor = '#7A210E';
+const darkRedColor = '#4D150A';
+const greenColor = '#0A6A56';
+
 export const darkTheme = {
-	bgColor: '#212121',
-	fontColor: '#fff',
-	headerBgColor: '#FEF5ED',
+	bgColor: '#212121', // 기본 설정
+	fontColor: '#fff', // 기본 설정
+	// HEADER
+	headerBgColor: darkRedColor,
+
+	//	MAIN
+	mainBgColor: 'radial-gradient(50% 50% at 50% 50%, #444444 0%, #1B1B1B 100%)',
+	mainHelloColor: '#CECECE',
+	mainImHColor: '#FFFFFF',
+	mainFEColor: '#4B4B4B',
+	mainTextShadow: '4px 4px 10px rgba(0, 0, 0, 0.5)',
 };
 
 export const lightTheme = {
 	bgColor: '#FEF5ED',
 	fontColor: '#4c3f36',
-	headerBgColor: '#212121',
+	headerBgColor: redColor,
 };
 
 export const theme = {
