@@ -8,7 +8,7 @@ import GlobalStyle from './styles/global-styles';
 import Content from 'pages/Content';
 
 function App() {
-	const [theme, setTheme] = useState('light');
+	const [theme, setTheme] = useState('dark');
 	const toggleTheme = () => {
 		if (theme === 'light') {
 			setTheme('dark');
