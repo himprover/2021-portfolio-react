@@ -66,6 +66,7 @@ const ContentDIV = styled.div`
 	div {
 		height: 100vh;
 		border: 1px solid black;
+		position: relative;
 	}
 `;
 
