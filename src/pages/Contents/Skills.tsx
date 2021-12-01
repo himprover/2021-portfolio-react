@@ -19,6 +19,11 @@ const Skills = forwardRef<any>((props, ref) => {
 				<REACT />
 				<TS />
 			</Logo1DIV>
+			<Logo2DIV>
+				<NEST />
+				<NODE />
+				<PHP />
+			</Logo2DIV>
 		</SkillsDIV>
 	);
 });
@@ -31,8 +36,15 @@ const SkillsDIV = styled.div`
 const Logo1DIV = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 90%;
+	width: 90vw;
 	margin: 0 auto;
+`;
+const Logo2DIV = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 60vw;
+	margin: 0 auto;
+	padding-top: 10rem;
 `;
 
 const Title = styled.h1`
@@ -47,40 +59,52 @@ const HTML5 = styled(HTML5SVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	polygon {
+		fill: #646464;
+	}
 `;
 
 const ES6 = styled(ES6SVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	polygon {
+		fill: #646464;
+	}
 `;
 
 const REACT = styled(REACTSVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	polygon {
+		fill: #646464;
+	}
 `;
 
 const TS = styled(TSSVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	polygon {
+		fill: #646464;
+	}
 `;
 
 const NEST = styled(NESTSVG)`
-	width: 30rem;
+	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 `;
 
 const NODE = styled(NODESVG)`
-	width: 30rem;
+	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 `;
 
 const PHP = styled(PHPSVG)`
-	width: 30rem;
+	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 `;
