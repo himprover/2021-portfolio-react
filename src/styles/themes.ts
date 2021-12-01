@@ -14,12 +14,21 @@ export const darkTheme = {
 	mainImHColor: '#FFFFFF',
 	mainFEColor: '#4B4B4B',
 	mainTextShadow: '4px 4px 10px rgba(0, 0, 0, 0.5)',
+	mainP1Color: '#7E7E7E',
+	mainP2Color: '#444444',
 };
 
 export const lightTheme = {
 	bgColor: '#FEF5ED',
 	fontColor: '#4c3f36',
+	//HEADER
 	headerBgColor: redColor,
+
+	// MAIN
+	mainHelloColor: '#000000',
+	mainTextShadow: '4px 4px 10px rgba(0, 0, 0, 0.5)',
+	mainP1Color: '#9c826f',
+	mainP2Color: '#4c3f36',
 };
 
 export const theme = {

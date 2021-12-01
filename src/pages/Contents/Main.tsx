@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { forwardRef } from 'react';
 
 import Hwang from '../../imgs/main/Hwang.png';
-import Polygon1 from '../../imgs/main/polygon1.svg';
-import Polygon2 from '../../imgs/main/polygon2.svg';
+import { ReactComponent as Polygon1 } from '../../imgs/main/polygon1.svg';
+import { ReactComponent as Polygon2 } from '../../imgs/main/polygon2.svg';
 
 import greenBigLine from '../../imgs/main/greenBigLine.svg';
 import greenSmallLine from '../../imgs/main/greenSmallLine.svg';
@@ -19,8 +19,8 @@ const Main = forwardRef<any>((props, ref) => {
 				<br />
 				<span>Developer</span>
 			</FE>
-			<Polygon1Styled src={Polygon1} />
-			<Polygon2Styled src={Polygon2} />
+			<Polygon1Styled />
+			<Polygon2Styled />
 			<HwangStyled src={Hwang} />
 			<GBline src={greenBigLine} />
 			<RBline src={redBigLine} />
@@ -67,21 +67,27 @@ const FE = styled.h1`
 	text-shadow: ${({ theme }: { theme: any }) => theme.mainTextShadow};
 `;
 
-const Polygon1Styled = styled.img`
+const Polygon1Styled = styled(Polygon1)`
 	position: absolute;
 	right: 30rem;
 	top: 20rem;
 	width: 65.7rem;
 	z-index: 1;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+	path {
+		fill: ${({ theme }: { theme: any }) => theme.mainP1Color};
+	}
 `;
-const Polygon2Styled = styled.img`
+const Polygon2Styled = styled(Polygon2)`
 	position: absolute;
-	right: 28rem;
-	top: 39rem;
+	right: 27.9rem;
+	top: 33rem;
 	width: 55rem;
 	z-index: 0;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+	path {
+		fill: ${({ theme }: { theme: any }) => theme.mainP2Color};
+	}
 `;
 const HwangStyled = styled.img`
 	position: absolute;
