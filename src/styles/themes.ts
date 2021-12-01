@@ -16,6 +16,9 @@ export const darkTheme = {
 	mainTextShadow: '4px 4px 10px rgba(0, 0, 0, 0.5)',
 	mainP1Color: '#7E7E7E',
 	mainP2Color: '#444444',
+
+	// SKILLS
+	skillsBgColor: '#282828',
 };
 
 export const lightTheme = {
