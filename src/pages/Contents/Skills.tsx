@@ -2,12 +2,23 @@ import styled from 'styled-components';
 import { forwardRef } from 'react';
 
 import { ReactComponent as HTML5SVG } from '../../imgs/skills/svg/HTML5.svg';
+import { ReactComponent as ES6SVG } from '../../imgs/skills/svg/ES6.svg';
+import { ReactComponent as REACTSVG } from '../../imgs/skills/svg/REACT.svg';
+import { ReactComponent as TSSVG } from '../../imgs/skills/svg/TS.svg';
+import { ReactComponent as NESTSVG } from '../../imgs/skills/svg/NEST.svg';
+import { ReactComponent as NODESVG } from '../../imgs/skills/svg/NODE.svg';
+import { ReactComponent as PHPSVG } from '../../imgs/skills/svg/PHP.svg';
 
 const Skills = forwardRef<any>((props, ref) => {
 	return (
 		<SkillsDIV ref={ref}>
 			<Title>Skills</Title>
-			<HTML5 />
+			<Logo1DIV>
+				<HTML5 />
+				<ES6 />
+				<REACT />
+				<TS />
+			</Logo1DIV>
 		</SkillsDIV>
 	);
 });
@@ -17,18 +28,61 @@ const SkillsDIV = styled.div`
 	overflow: hidden;
 `;
 
+const Logo1DIV = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	margin: 0 auto;
+`;
+
 const Title = styled.h1`
 	font-size: 6rem;
 	font-weight: 400;
-	position: absolute;
 	margin: 0;
 	padding-left: 3rem;
 	padding-top: 3rem;
-	top: 0;
 `;
 
 const HTML5 = styled(HTML5SVG)`
-	position: absolute;
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const ES6 = styled(ES6SVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const REACT = styled(REACTSVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const TS = styled(TSSVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const NEST = styled(NESTSVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const NODE = styled(NODESVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+`;
+
+const PHP = styled(PHPSVG)`
+	width: 30rem;
+	transform: rotate(15deg);
+	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 `;
 
 export default Skills;
