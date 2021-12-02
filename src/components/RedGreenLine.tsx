@@ -1,72 +1,85 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { ReactComponent as GBsvg } from '../imgs/main/greenBigLine.svg';
-import { ReactComponent as GSsvg } from '../imgs/main/greenSmallLine.svg';
-import { ReactComponent as RBsvg } from '../imgs/main/redBigLine.svg';
-import { ReactComponent as RSsvg } from '../imgs/main/redSmallLine.svg';
 import Line from './Line';
 
 function RedGreenLine() {
-	return <Line viewBox='0 0 100 500' x1={5} x2={5} y2={50} color='#000' />;
+	return (
+		<>
+			<Line
+				cssProps={RB}
+				viewBox='0 0 60 3000'
+				x1={3}
+				x2={3}
+				y2={300}
+				color='#A82B11'
+				isDash={false}
+			/>
+			<Line
+				cssProps={GB}
+				viewBox='0 0 60 3000'
+				x1={3}
+				x2={3}
+				y2={300}
+				color='#0A6A56'
+				isDash={false}
+			/>
+			<Line
+				cssProps={RS}
+				viewBox='0 0 10 3000'
+				x1={0.5}
+				x2={0.5}
+				y2={300}
+				color='#A82B11'
+				isDash={true}
+			/>
+			<Line
+				cssProps={GS}
+				viewBox='0 0 10 3000'
+				x1={0.5}
+				x2={0.5}
+				y2={300}
+				color='#0A6A56'
+				isDash={true}
+			/>
+		</>
+	);
 }
 
 const LineDIV = styled.div``;
 
-const RB = css`
+const RB = `
 	position: absolute;
-	top: -5rem;
-	right: -6rem;
-	width: 210rem;
-	height: 210rem;
-	rect {
-		width: 3rem;
-		height: 200rem;
-		z-index: 2;
-	}
+	top: -51rem;
+    right: 100rem;
+	transform:rotate(45deg);
+	z-index:2;
 `;
 
-const GB = styled(GBsvg)`
+const GB = `
 	position: absolute;
-	top: -5rem;
-	right: -13.9rem;
-	z-index: 2;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	width: 210rem;
-	height: 210rem;
-	rect {
-		width: 3rem;
-		height: 200rem;
-	}
+	top: -51rem;
+    right: 92rem;
+	transform:rotate(45deg);
+	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+	z-index:2;
 `;
 
-const RS = styled(RSsvg)`
+const RS = `
 	position: absolute;
-	top: 6rem;
-	right: -6rem;
-	z-index: 1;
-	width: 200rem;
-	height: 200rem;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	path {
-		stroke-width: 0.7rem;
-		stroke-dasharray: 1.5rem;
-		height: 200rem;
-	}
+	top: -51rem;
+    right: 87rem;
+	transform:rotate(45deg);
+	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+	z-index:1;
 `;
 
-const GS = styled(GSsvg)`
+const GS = `
 	position: absolute;
-	top: -3rem;
-	right: 7rem;
-	z-index: 1;
-	width: 200rem;
-	height: 200rem;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	path {
-		stroke-width: 0.7rem;
-		stroke-dasharray: 1.5rem;
-		height: 200rem;
-	}
+	top: -51rem;
+    right: 110rem;
+	transform:rotate(45deg);
+	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+	z-index:1;
 `;
 
 export default RedGreenLine;
