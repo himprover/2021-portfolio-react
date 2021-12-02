@@ -4,7 +4,7 @@ import Line from './Line';
 
 function RedGreenLine() {
 	return (
-		<>
+		<LineDIV>
 			<Line
 				cssProps={RB}
 				viewBox='0 0 60 3000'
@@ -41,11 +41,16 @@ function RedGreenLine() {
 				color='#0A6A56'
 				isDash={true}
 			/>
-		</>
+		</LineDIV>
 	);
 }
 
-const LineDIV = styled.div``;
+const LineDIV = styled.div`
+	position: relative;
+	width: 100%;
+	height: 200vh;
+	overflow: hidden;
+`;
 
 const RB = `
 	position: absolute;
