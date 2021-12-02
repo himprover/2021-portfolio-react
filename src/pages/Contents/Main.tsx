@@ -5,13 +5,12 @@ import Hwang from '../../imgs/main/Hwang.png';
 import { ReactComponent as Polygon1 } from '../../imgs/main/polygon1.svg';
 import { ReactComponent as Polygon2 } from '../../imgs/main/polygon2.svg';
 
-import greenBigLine from '../../imgs/main/greenBigLine.svg';
-import greenSmallLine from '../../imgs/main/greenSmallLine.svg';
-import redBigLine from '../../imgs/main/redBigLine.svg';
-import redSmallLine from '../../imgs/main/redSmallLine.svg';
+import RedGreenLine from 'components/RedGreenLine';
+
 const Main = forwardRef<any>((props, ref) => {
 	return (
 		<MainDIV ref={ref}>
+			<RedGreenLine />
 			<Hello>Hello</Hello>
 			<ImHwang>I'm Hwang</ImHwang>
 			<FE>
@@ -22,17 +21,13 @@ const Main = forwardRef<any>((props, ref) => {
 			<Polygon1Styled />
 			<Polygon2Styled />
 			<HwangStyled src={Hwang} />
-			<GBline src={greenBigLine} />
-			<RBline src={redBigLine} />
-			<GSline src={greenSmallLine} />
-			<RSline src={redSmallLine} />
 		</MainDIV>
 	);
 });
 
 const MainDIV = styled.div`
 	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
-	overflow: hidden;
+	//overflow: hidden;
 `;
 
 const Hello = styled.h2`
