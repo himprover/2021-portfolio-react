@@ -68,6 +68,10 @@ const ES6 = styled(ES6SVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 	polygon {
 		fill: #646464;
 	}
@@ -77,6 +81,10 @@ const REACT = styled(REACTSVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 	polygon {
 		fill: #646464;
 	}
@@ -86,6 +94,10 @@ const TS = styled(TSSVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 	polygon {
 		fill: #646464;
 	}
@@ -95,18 +107,30 @@ const NEST = styled(NESTSVG)`
 	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 `;
 
 const NODE = styled(NODESVG)`
 	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 `;
 
 const PHP = styled(PHPSVG)`
 	width: 20rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
+	z-index: 2;
+	img {
+		z-index: 2;
+	}
 `;
 
 export default Skills;
