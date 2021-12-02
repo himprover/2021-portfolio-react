@@ -1,4 +1,4 @@
-const redColor = '#7A210E';
+const redColor = '#A82B11';
 const darkRedColor = '#4D150A';
 const greenColor = '#0A6A56';
 
