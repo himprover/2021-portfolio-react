@@ -10,7 +10,7 @@ function ContactBG() {
 				YOU THANK
 			</BgText>
 			<BgText top='-50rem' left='-100rem'>
-				YOU <HighLight color='#0A6A56'>THANK</HighLight> YOU
+				YOU <HighLight color='#05362c'>THANK</HighLight> YOU
 			</BgText>
 			<BgText top='-10rem' left='-100rem'>
 				THANK YOU THANK YOU
@@ -19,7 +19,7 @@ function ContactBG() {
 				THANK YOU THANK YOU
 			</BgText>
 			<BgText top='-30rem' left='-00rem'>
-				THANK <HighLight color='#A82B11'>YOU</HighLight> THANK
+				THANK <HighLight color='#551408'>YOU</HighLight> THANK
 			</BgText>
 			<BgText top='-0rem' left='10rem'>
 				THANK YOU THANK
@@ -30,6 +30,8 @@ function ContactBG() {
 
 const BGDIV = styled.div`
 	position: absolute;
+	top: 0;
+	left: 0;
 	cursor: default;
 	z-index: -1;
 `;
