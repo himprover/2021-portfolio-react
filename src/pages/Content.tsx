@@ -16,41 +16,55 @@ function Content() {
 	const hobbyRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 
-	const [scrollY, setScrollY] = useState<number>(0);
-	const [section, setSection] = useState<number>(0);
+	//const [section, setSection] = useState<number>(0);
 
-	const throttleScrollHandler = useMemo(
-		() =>
-			throttle(() => {
-				const pageYOffset: number = contentRef.current?.scrollTop as number;
-				let deltaY = scrollY - pageYOffset;
-				if (deltaY < 0) {
-					console.log('내림');
-					if (section < 4) {
-						setSection((current) => current + 1);
-					}
-				} else {
-					console.log('올림');
-					if (section > 0) {
-						setSection((current) => current - 1);
-					}
+	const section = useRef<number>(0);
+
+	const onScroll = throttle((e: React.UIEvent<HTMLDivElement>) => {
+		if (e.currentTarget !== null) {
+			let yArray = [
+				mainRef.current!.offsetTop,
+				skillsRef.current!.offsetTop,
+				referenceRef.current!.offsetTop,
+				hobbyRef.current!.offsetTop,
+				contactRef.current!.offsetTop,
+			];
+			let scrollY = e.currentTarget.scrollTop;
+			console.log(yArray[section.current] as number);
+			console.log(scrollY);
+			let deltaY = (yArray[section.current] as number) - scrollY;
+			console.log('스크롤 이벤트');
+			if (deltaY < 0) {
+				console.log('내림');
+				if (section.current < 4) {
+					section.current++;
+					return contentRef.current!.scrollTo({
+						top: yArray[section.current],
+						behavior: 'smooth',
+					});
 				}
-				console.log(section);
-				setScrollY(pageYOffset);
-				console.log('page ' + pageYOffset);
-				console.log('scroll ' + scrollY);
-			}, 5000),
-		[]
-	);
+			} else {
+				console.log('올림');
+				if (section.current > 0) {
+					section.current--;
+					return contentRef.current!.scrollTo({
+						top: yArray[section.current],
+						behavior: 'smooth',
+					});
+				}
+			}
+		}
+	}, 290);
 
-	useEffect(() => {
-		contentRef.current?.addEventListener('scroll', throttleScrollHandler);
-		return () =>
-			contentRef.current?.removeEventListener('scroll', throttleScrollHandler);
-	}, [throttleScrollHandler]);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', () => {});
+	// 	return () => {
+	// 		window.removeEventListener('scroll', () => {});
+	// 	};
+	// }, []);
 
 	return (
-		<ContentDIV ref={contentRef}>
+		<ContentDIV ref={contentRef} onScroll={onScroll}>
 			<Main ref={mainRef} />
 			<Skills ref={skillsRef} />
 			<Reference ref={referenceRef} />

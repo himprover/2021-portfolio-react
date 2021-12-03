@@ -28,6 +28,7 @@ const Menu = styled.div`
 	width: 5rem;
 	height: 100vh;
 	background: ${({ theme }: { theme: any }) => theme.headerBgColor};
+	z-index: 5;
 `;
 
 export default Header;
