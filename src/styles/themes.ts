@@ -1,6 +1,6 @@
-const redColor = '#A82B11';
-const darkRedColor = '#4D150A';
-const greenColor = '#0A6A56';
+export const redColor: string = '#A82B11';
+export const darkRedColor: string = '#4D150A';
+export const greenColor: string = '#0A6A56';
 
 export const darkTheme = {
 	bgColor: '#212121', // 기본 설정
