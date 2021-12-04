@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { forwardRef } from 'react';
 
-import Hwang from '../../imgs/main/Hwang.png';
-import { ReactComponent as Polygon1 } from '../../imgs/main/polygon1.svg';
-import { ReactComponent as Polygon2 } from '../../imgs/main/polygon2.svg';
+import Hwang from 'imgs/main/Hwang.png';
+import { ReactComponent as Polygon1 } from 'imgs/main/polygon1.svg';
+import { ReactComponent as Polygon2 } from 'imgs/main/polygon2.svg';
 
 import RedGreenLine from 'components/RedGreenLine';
 
@@ -90,35 +90,6 @@ const HwangStyled = styled.img`
 	top: -1rem;
 	z-index: 3;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
-`;
-
-const GBline = styled.img`
-	position: absolute;
-	top: -4rem;
-	right: -9rem;
-	z-index: 2;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-`;
-const GSline = styled.img`
-	position: absolute;
-	top: -4.2rem;
-	right: 8rem;
-	z-index: 0;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-`;
-
-const RBline = styled.img`
-	position: absolute;
-	top: -4.2rem;
-	right: -1rem;
-	z-index: 2;
-`;
-const RSline = styled.img`
-	position: absolute;
-	top: -4rem;
-	right: -18rem;
-	z-index: 0;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
 export default Main;
