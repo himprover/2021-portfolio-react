@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar { display: none; }
 	* {
 	box-sizing: border-box;
-	transition: all 0.25s ease-in-out;
+	//transition: all 0.25s ease-in-out;
 	}
 	code {
 		font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
