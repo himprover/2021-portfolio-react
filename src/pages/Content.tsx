@@ -18,26 +18,42 @@ function Content() {
 	const contactRef = useRef<HTMLDivElement>(null);
 
 	const section = useRef<number>(0);
+	const lastTimestamp = useRef<number>(Date.now());
 
 	const [sectionState, setSection] = useState<number>(0);
+
+	const doubleChk = (time: number) => {
+		const nowDate = Date.now();
+		if (nowDate - lastTimestamp.current > time) {
+			lastTimestamp.current = nowDate;
+			console.log(nowDate - lastTimestamp.current);
+			return true;
+		} else {
+			console.log(nowDate - lastTimestamp.current);
+			return false;
+		}
+	};
 
 	const scrollHandler = useMemo(
 		() =>
 			throttle((e) => {
-				if (e.deltaY < 0) {
-					if (section.current > 0) {
-						console.log('??');
-						setSection((current) => current - 1);
-						section.current--;
-					}
-				} else {
-					if (section.current < 4) {
-						console.log('??');
-						setSection((current) => current + 1);
-						section.current++;
+				//if (+lastTimestamp.current - e.timeStamp > 1000) {
+				if (doubleChk(1010)) {
+					if (e.deltaY < 0) {
+						if (section.current > 0) {
+							console.log('??');
+							section.current--;
+							return setSection((current) => current - 1);
+						}
+					} else {
+						if (section.current < 4) {
+							console.log('??');
+							section.current++;
+							return setSection((current) => current + 1);
+						}
 					}
 				}
-			}, 1000),
+			}, 300),
 		[section]
 	);
 
@@ -47,20 +63,6 @@ function Content() {
 			window.removeEventListener('wheel', scrollHandler);
 		};
 	}, [scrollHandler]);
-
-	// return () => {
-	// 	window.removeEventListener('wheel', (e) => {
-	// 		if (e.deltaY < 0) {
-	// 			if (section > 0) {
-	// 				setSection((current) => current - 1);
-	// 			}
-	// 		} else {
-	// 			if (section < 4) {
-	// 				setSection((current) => current + 1);
-	// 			}
-	// 		}
-	// 	});
-	// };
 
 	return (
 		<ContentDIV ref={contentRef} nowSection={sectionState}>
@@ -78,7 +80,7 @@ const ContentDIV = styled.div<{ nowSection: number }>`
 	position: fixed;
 	height: 100vh;
 	top: 0;
-	transition: all 1000ms ease 0s;
+	transition: all 950ms ease 0s;
 	${(props) =>
 		css`
 			transform: translateY(${-100 * props.nowSection + 'vh'});
