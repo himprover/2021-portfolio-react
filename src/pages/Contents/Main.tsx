@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { forwardRef } from 'react';
 
 import Hwang from 'imgs/main/Hwang.png';
@@ -25,9 +25,23 @@ const Main = forwardRef<any>((props, ref) => {
 	);
 });
 
+const fadeInFE1 = keyframes`
+	0% {
+		transform:translate(100rem, -100rem) rotate(-45deg);
+	} 100% {
+		transform:translate(0, 0) rotate(-45deg);
+	}
+`;
+const fadeInFE2 = keyframes`
+	0% {
+		transform:translate(-100rem, 100rem) rotate(-45deg);
+	} 100% {
+		transform:translate(0, 0) rotate(-45deg);
+	}
+`;
+
 const MainDIV = styled.div`
 	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
-	//overflow: hidden;
 `;
 
 const Hello = styled.h2`
@@ -60,6 +74,13 @@ const FE = styled.h1`
 	left: -10rem;
 	color: ${({ theme }: { theme: any }) => theme.mainFEColor};
 	text-shadow: ${({ theme }: { theme: any }) => theme.mainTextShadow};
+
+	span:first-child {
+		animation: ${fadeInFE1} 2s 1s;
+	}
+	span:last-child {
+		animation: ${fadeInFE2} 2s 1s;
+	}
 `;
 
 const Polygon1Styled = styled(Polygon1)`

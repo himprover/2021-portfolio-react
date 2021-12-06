@@ -7,7 +7,7 @@ import Contact from './Contents/Contact';
 
 import { throttle } from 'lodash';
 
-import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 
 function Content() {
 	const contentRef = useRef<HTMLDivElement>(null);
