@@ -41,13 +41,11 @@ function Content() {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
 						if (section.current > 0) {
-							console.log('??');
 							section.current--;
 							return setSection((current) => current - 1);
 						}
 					} else {
 						if (section.current < 4) {
-							console.log('??');
 							section.current++;
 							return setSection((current) => current + 1);
 						}
