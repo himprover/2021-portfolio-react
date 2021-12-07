@@ -3,17 +3,17 @@ import { forwardRef } from 'react';
 
 import HobbyPng1 from 'imgs/hobby/png/hobby1.png';
 import HobbyPng2 from 'imgs/hobby/png/hobby2.png';
-const Hobby = forwardRef<any>((props, ref) => {
+const AboutMe = forwardRef<any>((props, ref) => {
 	return (
-		<HobbyDIV ref={ref}>
+		<AboutMeDIV ref={ref}>
 			<Title>Hobby</Title>
 			<HobbyImg1 src={HobbyPng1} />
 			<HobbyImg2 src={HobbyPng2} />
-		</HobbyDIV>
+		</AboutMeDIV>
 	);
 });
 
-const HobbyDIV = styled.div`
+const AboutMeDIV = styled.div`
 	background: radial-gradient(
 		82.47% 260.66% at 16.85% 50%,
 		#474747 0%,
@@ -50,4 +50,4 @@ const HobbyImg2 = styled.img`
 	filter: drop-shadow(5px 5px 5px #00000070);
 `;
 
-export default Hobby;
+export default AboutMe;
