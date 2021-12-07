@@ -18,7 +18,7 @@ const AboutMe = forwardRef<any>((props, ref) => {
 					<br />
 					궁금한 것은 찾아보고 알아보는 성격입니다.
 				</MentSub>
-				<MentSub>알아가는 것을 즐기며, 그 만큼 노는 것도 좋아합니다.</MentSub>
+				<MentSub>알아가는 행위를 즐기며, 그 만큼 노는 것도 좋아합니다.</MentSub>
 				<MentSub>게으른 성격으로, 최고의 효율을 좋아합니다.</MentSub>
 				<MentSub>여행·사진, 운전이 취미며 수영을 좋아합니다.</MentSub>
 			</MentArea>
