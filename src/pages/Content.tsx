@@ -12,7 +12,7 @@ import Contact from './Contents/Contact';
 
 import { throttle } from 'lodash';
 
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 function Content() {
 	const contentRef = useRef<HTMLDivElement>(null);
@@ -22,8 +22,8 @@ function Content() {
 	const aboutmeRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 
-	const count = useSelector((state: RootState) => state.counter.count);
-	const dispatch = useDispatch();
+	const count = useSelector((state: RootState) => state.counter.count); // Redux_count load
+	const dispatch = useDispatch(); // use dispatch
 
 	const onIncrease = () => {
 		dispatch(increase());
@@ -33,11 +33,9 @@ function Content() {
 		dispatch(decrease());
 	};
 
-	const section = useRef<number>(0);
 	const lastTimestamp = useRef<number>(Date.now());
 
-	const [sectionState, setSection] = useState<number>(0);
-
+	// scrollTimeChk
 	const doubleChk = (time: number) => {
 		const nowDate = Date.now();
 		if (nowDate - lastTimestamp.current > time) {
@@ -53,17 +51,14 @@ function Content() {
 	const scrollHandler = useMemo(
 		() =>
 			throttle((e) => {
-				//if (+lastTimestamp.current - e.timeStamp > 1000) {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
 						if (count > 0) {
 							onDecrease();
-							//setSection((current) => current - 1);
 						}
 					} else {
 						if (count < 4) {
 							onIncrease();
-							//setSection((current) => current + 1);
 						}
 					}
 				}
