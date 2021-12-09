@@ -13,17 +13,18 @@ const Main = forwardRef<any>((props, ref) => {
 			<RedGreenLine />
 			<Hello>Hello</Hello>
 			<ImHwang>I'm Hwang</ImHwang>
-			<FE>
-				<span>FRONT</span>
-				<br />
-				<span>Developer</span>
-			</FE>
+			<FETOP>FRONT</FETOP>
+			<FEBOTTOM>Developer</FEBOTTOM>
 			<Polygon1Styled />
 			<Polygon2Styled />
 			<HwangStyled src={Hwang} />
 		</MainDIV>
 	);
 });
+
+const MainDIV = styled.div`
+	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
+`;
 
 const fadeInFE1 = keyframes`
 	0% {
@@ -38,10 +39,6 @@ const fadeInFE2 = keyframes`
 	} 100% {
 		transform:translate(0, 0) rotate(-45deg);
 	}
-`;
-
-const MainDIV = styled.div`
-	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
 `;
 
 const Hello = styled.h2`
@@ -70,17 +67,20 @@ const FE = styled.h1`
 	font-size: 33rem;
 	line-height: 26rem;
 	font-weight: 700;
-	top: -12rem;
-	left: -10rem;
 	color: ${({ theme }: { theme: any }) => theme.mainFEColor};
 	text-shadow: ${({ theme }: { theme: any }) => theme.mainTextShadow};
+`;
 
-	span:first-child {
-		animation: ${fadeInFE1} 2s 1s;
-	}
-	span:last-child {
-		animation: ${fadeInFE2} 2s 1s;
-	}
+const FETOP = styled(FE)`
+	top: -4rem;
+	left: -12rem;
+	animation: ${fadeInFE1} 1s;
+`;
+
+const FEBOTTOM = styled(FE)`
+	top: -2rem;
+	left: 0rem;
+	animation: ${fadeInFE2} 1s;
 `;
 
 const Polygon1Styled = styled(Polygon1)`
