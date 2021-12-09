@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Line from './Line';
 
@@ -52,39 +52,39 @@ const LineDIV = styled.div`
 	overflow: hidden;
 `;
 
-const RB = `
+const RB = css`
 	position: absolute;
 	top: -51rem;
-    right: 100rem;
-	transform:rotate(45deg);
-	z-index:2;
+	right: 100rem;
+	transform: rotate(45deg) translate(0, -500rem);
+	z-index: 2;
 `;
 
-const GB = `
+const GB = css`
 	position: absolute;
 	top: -51rem;
-    right: 92rem;
-	transform:rotate(45deg);
+	right: 92rem;
+	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:2;
+	z-index: 2;
 `;
 
-const RS = `
+const RS = css`
 	position: absolute;
 	top: -51rem;
-    right: 87rem;
-	transform:rotate(45deg);
+	right: 87rem;
+	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:1;
+	z-index: 1;
 `;
 
-const GS = `
+const GS = css`
 	position: absolute;
 	top: -51rem;
-    right: 110rem;
-	transform:rotate(45deg);
+	right: 110rem;
+	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:1;
+	z-index: 1;
 `;
 
 export default RedGreenLine;
