@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import Line from './Line';
 
@@ -51,6 +51,10 @@ const LineDIV = styled.div`
 	height: 200vh;
 	overflow: hidden;
 `;
+const rightIn = keyframes`
+	0%{transform:rotate(45deg) translate(0,-500rem);}
+	100%{transform:rotate(45deg) translate(0,0);}
+`;
 
 const RB = css`
 	position: absolute;
@@ -58,6 +62,7 @@ const RB = css`
 	right: 100rem;
 	transform: rotate(45deg) translate(0, -500rem);
 	z-index: 2;
+	animation: ${rightIn} 1s 3s forwards;
 `;
 
 const GB = css`
@@ -67,6 +72,7 @@ const GB = css`
 	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
 	z-index: 2;
+	animation: ${rightIn} 1s 3s forwards;
 `;
 
 const RS = css`
@@ -76,6 +82,7 @@ const RS = css`
 	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
 	z-index: 1;
+	animation: ${rightIn} 1s 3s forwards;
 `;
 
 const GS = css`
@@ -85,6 +92,7 @@ const GS = css`
 	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
 	z-index: 1;
+	animation: ${rightIn} 1s 3s forwards;
 `;
 
 export default RedGreenLine;

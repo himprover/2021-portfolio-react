@@ -33,15 +33,11 @@ function Line({ viewBox, x1, x2, y2, color, cssProps, isDash }: LProps) {
 		</StyledSvg>
 	);
 }
-const rightIn = keyframes`
-	0%{transform:rotate(45deg) translate(0,-500rem);}
-	100%{transform:rotate(45deg) translate(0,0);}
-`;
+
 const StyledSvg = styled.svg<{ cssProps: CSSProp }>`
 	width: ${(props) => props.width + 'rem'};
 	height: ${(props) => props.height + 'rem'};
 	${(props) => props.cssProps}
-	animation: ${rightIn} 1s 3s forwards;
 `;
 const StyledLine = styled.line<{ isDash: boolean }>`
 	stroke: ${(props) => props.color};
