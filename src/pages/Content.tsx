@@ -1,4 +1,9 @@
 import styled, { css } from 'styled-components';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'modules';
+import { increase, decrease } from 'modules/counter';
+
 import Main from './Contents/Main';
 import Skills from './Contents/Skills';
 import Reference from './Contents/Reference';
@@ -16,6 +21,17 @@ function Content() {
 	const referenceRef = useRef<HTMLDivElement>(null);
 	const aboutmeRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
+
+	const count = useSelector((state: RootState) => state.counter.count);
+	const dispatch = useDispatch();
+
+	const onIncrease = () => {
+		dispatch(increase());
+	};
+
+	const onDecrease = () => {
+		dispatch(decrease());
+	};
 
 	const section = useRef<number>(0);
 	const lastTimestamp = useRef<number>(Date.now());
@@ -40,19 +56,19 @@ function Content() {
 				//if (+lastTimestamp.current - e.timeStamp > 1000) {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
-						if (section.current > 0) {
-							section.current--;
-							return setSection((current) => current - 1);
+						if (count > 0) {
+							onDecrease();
+							//setSection((current) => current - 1);
 						}
 					} else {
-						if (section.current < 4) {
-							section.current++;
-							return setSection((current) => current + 1);
+						if (count < 4) {
+							onIncrease();
+							//setSection((current) => current + 1);
 						}
 					}
 				}
 			}, 300),
-		[section]
+		[count]
 	);
 
 	useEffect(() => {
@@ -63,7 +79,7 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV ref={contentRef} nowSection={sectionState}>
+		<ContentDIV ref={contentRef} nowSection={count}>
 			<Main ref={mainRef} />
 			<Skills ref={skillsRef} />
 			<Reference ref={referenceRef} />
