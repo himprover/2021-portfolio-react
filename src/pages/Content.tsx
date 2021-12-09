@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import Main from './Contents/Main';
 import Skills from './Contents/Skills';
 import Reference from './Contents/Reference';
-import Hobby from './Contents/Hobby';
+import AboutMe from './Contents/AboutMe';
 import Contact from './Contents/Contact';
 
 import { throttle } from 'lodash';
@@ -14,7 +14,7 @@ function Content() {
 	const mainRef = useRef<HTMLDivElement>(null);
 	const skillsRef = useRef<HTMLDivElement>(null);
 	const referenceRef = useRef<HTMLDivElement>(null);
-	const hobbyRef = useRef<HTMLDivElement>(null);
+	const aboutmeRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 
 	const section = useRef<number>(0);
@@ -41,13 +41,11 @@ function Content() {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
 						if (section.current > 0) {
-							console.log('??');
 							section.current--;
 							return setSection((current) => current - 1);
 						}
 					} else {
 						if (section.current < 4) {
-							console.log('??');
 							section.current++;
 							return setSection((current) => current + 1);
 						}
@@ -69,7 +67,7 @@ function Content() {
 			<Main ref={mainRef} />
 			<Skills ref={skillsRef} />
 			<Reference ref={referenceRef} />
-			<Hobby ref={hobbyRef} />
+			<AboutMe ref={aboutmeRef} />
 			<Contact ref={contactRef} />
 		</ContentDIV>
 	);
