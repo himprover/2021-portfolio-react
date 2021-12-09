@@ -6,6 +6,11 @@ import { lightTheme, darkTheme } from './styles/themes';
 import Header from 'pages/Header';
 import GlobalStyle from './styles/global-styles';
 import Content from 'pages/Content';
+import rootReducer from './modules';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const store = createStore(rootReducer);
 
 function App() {
 	const [theme, setTheme] = useState('dark');
@@ -18,13 +23,15 @@ function App() {
 	};
 
 	return (
-		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-			<Wrap>
-				<GlobalStyle />
-				<Header theme={theme} setTheme={toggleTheme} />
-				<Content />
-			</Wrap>
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+				<Wrap>
+					<GlobalStyle />
+					<Header theme={theme} setTheme={toggleTheme} />
+					<Content />
+				</Wrap>
+			</ThemeProvider>
+		</Provider>
 	);
 }
 
