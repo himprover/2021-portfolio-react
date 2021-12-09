@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 interface LProps {
 	isLoading: boolean;
@@ -91,7 +91,15 @@ const LoadingDIV = styled.div<{ isLoading: boolean }>`
 	z-index: 999;
 	background: black;
 	opacity: 1;
-	${(props) => (props.isLoading === true ? 'opacity:1' : 'opacity:0')}
+	transition: opacity 0.5s ease-in-out;
+	${(props) =>
+		props.isLoading === true
+			? css`
+					opacity: 1;
+			  `
+			: css`
+					opacity: 0;
+			  `}
 `;
 
 const strokeAnimation = keyframes`
