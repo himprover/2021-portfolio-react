@@ -1,8 +1,16 @@
 import styled, { css, keyframes } from 'styled-components';
 
 import Line from './Line';
+import { useSelector } from 'react-redux';
+import { RootState } from 'modules';
+import { useEffect, useRef } from 'react';
 
 function RedGreenLine() {
+	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
+	const isLoadingRef = useRef<boolean>(isLoading);
+	useEffect(() => {
+		isLoadingRef.current = isLoading;
+	}, [isLoading]);
 	return (
 		<LineDIV>
 			<Line

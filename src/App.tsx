@@ -14,7 +14,6 @@ import Loading from 'components/Loading';
 const store = createStore(rootReducer);
 
 function App() {
-	const [loading, setLoading] = useState<boolean>(true);
 	const [theme, setTheme] = useState('dark');
 	const toggleTheme = () => {
 		if (theme === 'light') {
@@ -23,19 +22,12 @@ function App() {
 			setTheme('light');
 		}
 	};
-	useEffect(() => {
-		let countInterval = setInterval(() => {
-			setLoading(false);
-		}, 2000);
-
-		return () => clearInterval(countInterval);
-	});
 
 	return (
 		<Provider store={store}>
 			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 				<Wrap>
-					<Loading isLoading={loading} />
+					<Loading />
 					<GlobalStyle />
 					<Header theme={theme} setTheme={toggleTheme} />
 					<Content />
