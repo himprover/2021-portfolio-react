@@ -112,10 +112,10 @@ const Hello = styled.h2<{ nowsection: number; isloading: boolean }>`
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${fadeIn} 1s forwards;
+					animation: ${fadeIn} 1s 1s forwards;
 			  `
 			: css`
-					animation: ${fadeOut} 1s backwards;
+					animation: ${fadeOut} 1s 1s backwards;
 			  `}
 `;
 const ImHwang = styled.h1<{ nowsection: number; isloading: boolean }>`
@@ -131,7 +131,7 @@ const ImHwang = styled.h1<{ nowsection: number; isloading: boolean }>`
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${fadeIn} 1s 0.3s forwards;
+					animation: ${fadeIn} 1s 1.3s forwards;
 			  `
 			: css`
 					animation: ${fadeOut} 1s backwards;
@@ -154,7 +154,7 @@ const FETOP = styled(FE)<{ nowsection: number; isloading: boolean }>`
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${rightIn} 1s 0.5s forwards;
+					animation: ${rightIn} 1s 1.5s forwards;
 			  `
 			: css`
 					animation: ${rightOut} 1s forwards;
@@ -169,7 +169,7 @@ const FEBOTTOM = styled(FE)<{ nowsection: number; isloading: boolean }>`
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${leftIn} 1s 0.5s forwards;
+					animation: ${leftIn} 1s 1.5s forwards;
 			  `
 			: css`
 					animation: ${leftOut} 1s forwards;
@@ -193,7 +193,7 @@ const Polygon1Styled = styled(Polygon1)<{
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${fadeIn} 1s 0.8s forwards;
+					animation: ${fadeIn} 1s 1.8s forwards;
 			  `
 			: css`
 					animation: ${fadeOut} 1s backwards;
@@ -216,7 +216,7 @@ const Polygon2Styled = styled(Polygon2)<{
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${PolyFadeIn} 1s 1.5s forwards;
+					animation: ${PolyFadeIn} 1s 2.5s forwards;
 			  `
 			: css`
 					animation: ${fadeOut} 1s backwards;
@@ -232,7 +232,7 @@ const HwangStyled = styled.img<{ nowsection: number; isloading: boolean }>`
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${fadeIn} 1s 0.8s forwards;
+					animation: ${fadeIn} 1s 1.8s forwards;
 			  `
 			: css`
 					animation: ${fadeOut} 1s backwards;

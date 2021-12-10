@@ -10,6 +10,8 @@ function Loading() {
 	const isLoading = useSelector((state: RootState) => state.loader.isLoading); // Redux_count load
 	const dispatch = useDispatch(); // use dispatch
 
+	const [loadState, setLoad] = useState<boolean>(isLoading);
+
 	const onSET = () => {
 		dispatch(set());
 	};
@@ -22,9 +24,14 @@ function Loading() {
 	useEffect(() => {
 		let LoadingSetTime = setTimeout(() => {
 			onSET();
-		}, 2000);
+			console.log('이거');
+			setTimeout(() => {
+				setLoad(false);
+				console.log('요거');
+			}, 1000);
+		}, 1000);
 		return () => clearTimeout(LoadingSetTime);
-	});
+	}, [isLoading]);
 
 	useEffect(() => {
 		window.addEventListener('resize', handleResize);
@@ -51,7 +58,7 @@ function Loading() {
 	const RightBG = `M ${vw},0 L ${vw},${vh} ${vw / 2 - vw / 10 - 1 }, ${vh} ${vw / 2 + vw / 10 - 1 },0`;
 
 	return (
-		<LoadingDIV isLoading={isLoading}>
+		<LoadingDIV isLoading={loadState}>
 			<Svg height={vh} width={vw} zIndex={10}>
 				<FirstPath
 					d={RedHorizontal}
@@ -117,11 +124,11 @@ const LoadingDIV = styled.div<{ isLoading: boolean }>`
 	z-index: 10;
 	transition: opacity 0.5s ease-in-out;
 	${(props) =>
-		props.isLoading === true
-			? css``
-			: css`
+		props.isLoading === false
+			? css`
 					display: none;
-			  `}
+			  `
+			: null};
 `;
 
 const strokeAnimation = keyframes`
