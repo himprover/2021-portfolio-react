@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'modules';
+import { set } from 'modules/loader';
 
-interface LProps {
-	isLoading: boolean;
-}
-
-function Loading(props: LProps) {
+function Loading() {
 	const [vh, setVh] = useState<number>(window.innerHeight);
 	const [vw, setVw] = useState<number>(window.innerWidth);
+	const isLoading = useSelector((state: RootState) => state.loader.isLoading); // Redux_count load
+	const dispatch = useDispatch(); // use dispatch
+
+	const onSET = () => {
+		dispatch(set());
+	};
 
 	const handleResize = () => {
 		setVh(window.innerHeight);
@@ -15,12 +20,17 @@ function Loading(props: LProps) {
 	};
 
 	useEffect(() => {
-		//if (props.isLoading === true) {
+		let LoadingSetTime = setTimeout(() => {
+			onSET();
+		}, 2000);
+		return () => clearTimeout(LoadingSetTime);
+	});
+
+	useEffect(() => {
 		window.addEventListener('resize', handleResize);
 		return () => {
 			window.removeEventListener('resize', handleResize);
 		};
-		//}
 	});
 
 	// prettier-ignore
@@ -41,7 +51,7 @@ function Loading(props: LProps) {
 	const RightBG = `M ${vw},0 L ${vw},${vh} ${vw / 2 - vw / 10 - 1 }, ${vh} ${vw / 2 + vw / 10 - 1 },0`;
 
 	return (
-		<LoadingDIV isLoading={props.isLoading}>
+		<LoadingDIV isLoading={isLoading}>
 			<Svg height={vh} width={vw} zIndex={10}>
 				<FirstPath
 					d={RedHorizontal}
@@ -82,14 +92,14 @@ function Loading(props: LProps) {
 			</Svg>
 
 			<Svg height={vh} width={vw} zIndex={9}>
-				<MovingPath d={LeftBG} fill='#DAE1E7' sNum={1.8} direction='Left' />
-				<MovingPath d={RightBG} fill='#E7E7DE' sNum={1.8} direction='Right' />
-				<MovingPath d={LeftBG} fill='#00909E' sNum={1.6} direction='Left' />
-				<MovingPath d={RightBG} fill='#008891' sNum={1.6} direction='Right' />
-				<MovingPath d={LeftBG} fill='#27496D' sNum={1.4} direction='Left' />
-				<MovingPath d={RightBG} fill='#00587A' sNum={1.4} direction='Right' />
-				<MovingPath d={LeftBG} fill='#142850' sNum={1.2} direction='Left' />
-				<MovingPath d={RightBG} fill='#0F3057' sNum={1.2} direction='Right' />
+				<MovingPath d={LeftBG} fill='#D9D8D7' sNum={1.8} direction='Left' />
+				<MovingPath d={RightBG} fill='#F2E7C4' sNum={1.8} direction='Right' />
+				<MovingPath d={LeftBG} fill='#D99E91' sNum={1.6} direction='Left' />
+				<MovingPath d={RightBG} fill='#3F733D' sNum={1.6} direction='Right' />
+				<MovingPath d={LeftBG} fill='#A64B4B' sNum={1.4} direction='Left' />
+				<MovingPath d={RightBG} fill='#30592E' sNum={1.4} direction='Right' />
+				<MovingPath d={LeftBG} fill='#D91A1A' sNum={1.2} direction='Left' />
+				<MovingPath d={RightBG} fill='#0D2611' sNum={1.2} direction='Right' />
 				<MovingPath d={LeftBG} fill='#000000' sNum={1} direction='Left' />
 				<MovingPath d={RightBG} fill='#000000' sNum={1} direction='Right' />
 			</Svg>
@@ -108,11 +118,9 @@ const LoadingDIV = styled.div<{ isLoading: boolean }>`
 	transition: opacity 0.5s ease-in-out;
 	${(props) =>
 		props.isLoading === true
-			? css`
-					opacity: 1;
-			  `
+			? css``
 			: css`
-					opacity: 1;
+					display: none;
 			  `}
 `;
 
