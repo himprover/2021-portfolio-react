@@ -18,7 +18,7 @@ function loader(
 ): LoadingState {
 	switch (action.type) {
 		case SET:
-			return { isLoading: !state.isLoading };
+			return { isLoading: false };
 		default:
 			return state;
 	}
