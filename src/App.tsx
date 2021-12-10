@@ -26,7 +26,7 @@ function App() {
 	useEffect(() => {
 		let countInterval = setInterval(() => {
 			setLoading(false);
-		}, 1000);
+		}, 2000);
 
 		return () => clearInterval(countInterval);
 	});
