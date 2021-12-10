@@ -23,24 +23,26 @@ function Loading(props: LProps) {
 		//}
 	});
 
+	// prettier-ignore
 	const RedHorizontal = `M 0, ${vh / 2} L ${vw / 2}, ${vh / 2} `;
-	const RedVertical1 = `M ${vw / 2 - 1}, ${vh / 2} L ${
-		vw / 2 + vw / 10 - 1
-	}, 0 `;
-	const RedVertical2 = `M  ${vw / 2 - 1}, ${vh / 2} L ${
-		vw / 2 - vw / 10 - 1
-	}, ${vh} `;
+	// prettier-ignore
+	const RedVertical1 = `M ${vw / 2 - 1}, ${vh / 2} L ${vw / 2 + vw / 10 - 1}, 0 `;
+	// prettier-ignore
+	const RedVertical2 = `M  ${vw / 2 - 1}, ${vh / 2} L ${vw / 2 - vw / 10 - 1}, ${vh} `;
+	// prettier-ignore
 	const GreenHorizontal = `M ${vw}, ${vh / 2} L ${vw / 2}, ${vh / 2} `;
-	const GreenVertical1 = `M ${vw / 2 + 1}, ${vh / 2} L ${
-		vw / 2 + vw / 10 + 1
-	}, 0 `;
-	const GreenVertical2 = `M  ${vw / 2 + 1}, ${vh / 2} L ${
-		vw / 2 - vw / 10 + 1
-	}, ${vh} `;
+	// prettier-ignore
+	const GreenVertical1 = `M ${vw / 2 + 1}, ${vh / 2} L ${	vw / 2 + vw / 10 + 1}, 0 `;
+	// prettier-ignore
+	const GreenVertical2 = `M  ${vw / 2 + 1}, ${vh / 2} L ${vw / 2 - vw / 10 + 1}, ${vh}`;
+	// prettier-ignore
+	const LeftBG = `M 0, 0 L ${vw / 2 + vw / 10 + 1}, 0  ${vw / 2 - vw / 10 + 1}, ${vh} 0, ${vh}`;
+	// prettier-ignore
+	const RightBG = `M ${vw},0 L ${vw},${vh} ${vw / 2 - vw / 10 - 1 }, ${vh} ${vw / 2 + vw / 10 - 1 },0`;
 
 	return (
 		<LoadingDIV isLoading={props.isLoading}>
-			<svg height={vh} width={vw}>
+			<Svg height={vh} width={vw} zIndex={10}>
 				<FirstPath
 					d={RedHorizontal}
 					stroke='#A82B11'
@@ -77,7 +79,20 @@ function Loading(props: LProps) {
 					fill='none'
 					storke-width='1'
 				/>
-			</svg>
+			</Svg>
+
+			<Svg height={vh} width={vw} zIndex={9}>
+				<MovingPath d={LeftBG} fill='#DAE1E7' sNum={1.8} direction='Left' />
+				<MovingPath d={RightBG} fill='#E7E7DE' sNum={1.8} direction='Right' />
+				<MovingPath d={LeftBG} fill='#00909E' sNum={1.6} direction='Left' />
+				<MovingPath d={RightBG} fill='#008891' sNum={1.6} direction='Right' />
+				<MovingPath d={LeftBG} fill='#27496D' sNum={1.4} direction='Left' />
+				<MovingPath d={RightBG} fill='#00587A' sNum={1.4} direction='Right' />
+				<MovingPath d={LeftBG} fill='#142850' sNum={1.2} direction='Left' />
+				<MovingPath d={RightBG} fill='#0F3057' sNum={1.2} direction='Right' />
+				<MovingPath d={LeftBG} fill='#000000' sNum={1} direction='Left' />
+				<MovingPath d={RightBG} fill='#000000' sNum={1} direction='Right' />
+			</Svg>
 		</LoadingDIV>
 	);
 }
@@ -88,9 +103,8 @@ const LoadingDIV = styled.div<{ isLoading: boolean }>`
 	height: 100vh;
 	top: 0;
 	left: 0;
-	z-index: 999;
-	background: black;
 	opacity: 1;
+	z-index: 10;
 	transition: opacity 0.5s ease-in-out;
 	${(props) =>
 		props.isLoading === true
@@ -98,7 +112,7 @@ const LoadingDIV = styled.div<{ isLoading: boolean }>`
 					opacity: 1;
 			  `
 			: css`
-					opacity: 0;
+					opacity: 1;
 			  `}
 `;
 
@@ -110,17 +124,45 @@ const strokeAnimation = keyframes`
 	}
 `;
 
-const Path = styled.path`
+const moveLeft = keyframes`
+	to{transform:translateX(-100vw);}
+`;
+
+const moveRight = keyframes`
+	to{transform:translateX(100vw);}
+`;
+
+const Svg = styled.svg<{ zIndex: number }>`
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: ${(props) => props.zIndex};
+`;
+
+const MovingPath = styled.path<{ direction: string; sNum: number }>`
+	${(props) =>
+		props.direction === 'Right'
+			? css`
+					animation: ${moveRight} 0.7s ${props.sNum * 0.8 + 's'} ease-in-out
+						forwards;
+			  `
+			: css`
+					animation: ${moveLeft} 0.7s ${props.sNum * 0.8 + 's'} ease-in-out
+						forwards;
+			  `}
+`;
+
+const Line = styled.path`
 	stroke-dasharray: 50vw;
 	stroke-dashoffset: 150vw;
 `;
 
-const FirstPath = styled(Path)`
+const FirstPath = styled(Line)`
 	animation: ${strokeAnimation} 1s cubic-bezier(0.785, 0.135, 0.15, 0.86)
 		forwards;
 `;
 
-const SecondPath = styled(Path)`
+const SecondPath = styled(Line)`
 	stroke-dasharray: 50vw;
 	stroke-dashoffset: 150vw;
 	animation: ${strokeAnimation} 1.5s 0.5s cubic-bezier(0.33, 1, 0.68, 1)
