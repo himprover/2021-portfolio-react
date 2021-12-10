@@ -1,4 +1,9 @@
 import styled, { css } from 'styled-components';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'modules';
+import { increase, decrease } from 'modules/counter';
+
 import Main from './Contents/Main';
 import Skills from './Contents/Skills';
 import Reference from './Contents/Reference';
@@ -7,7 +12,7 @@ import Contact from './Contents/Contact';
 
 import { throttle } from 'lodash';
 
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
 function Content() {
 	const contentRef = useRef<HTMLDivElement>(null);
@@ -17,11 +22,20 @@ function Content() {
 	const aboutmeRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 
-	const section = useRef<number>(0);
+	const count = useSelector((state: RootState) => state.counter.count); // Redux_count load
+	const dispatch = useDispatch(); // use dispatch
+
+	const onIncrease = () => {
+		dispatch(increase());
+	};
+
+	const onDecrease = () => {
+		dispatch(decrease());
+	};
+
 	const lastTimestamp = useRef<number>(Date.now());
 
-	const [sectionState, setSection] = useState<number>(0);
-
+	// scrollTimeChk
 	const doubleChk = (time: number) => {
 		const nowDate = Date.now();
 		if (nowDate - lastTimestamp.current > time) {
@@ -37,22 +51,19 @@ function Content() {
 	const scrollHandler = useMemo(
 		() =>
 			throttle((e) => {
-				//if (+lastTimestamp.current - e.timeStamp > 1000) {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
-						if (section.current > 0) {
-							section.current--;
-							return setSection((current) => current - 1);
+						if (count > 0) {
+							onDecrease();
 						}
 					} else {
-						if (section.current < 4) {
-							section.current++;
-							return setSection((current) => current + 1);
+						if (count < 4) {
+							onIncrease();
 						}
 					}
 				}
 			}, 300),
-		[section]
+		[count]
 	);
 
 	useEffect(() => {
@@ -63,7 +74,7 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV ref={contentRef} nowSection={sectionState}>
+		<ContentDIV ref={contentRef} nowSection={count}>
 			<Main ref={mainRef} />
 			<Skills ref={skillsRef} />
 			<Reference ref={referenceRef} />

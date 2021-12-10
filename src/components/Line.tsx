@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { CSSProp, keyframes } from 'styled-components';
 
 interface LProps {
 	viewBox: string;
@@ -6,13 +6,14 @@ interface LProps {
 	x2: number;
 	y2: number;
 	color: string;
-	cssProps: string;
+	cssProps: CSSProp;
 	isDash: boolean;
 }
 
 function Line({ viewBox, x1, x2, y2, color, cssProps, isDash }: LProps) {
 	const width = x1 + x2;
 	const height = y2;
+	//const count = useSelector((state: RootState) => state.counter.count);
 
 	return (
 		<StyledSvg
@@ -32,7 +33,8 @@ function Line({ viewBox, x1, x2, y2, color, cssProps, isDash }: LProps) {
 		</StyledSvg>
 	);
 }
-const StyledSvg = styled.svg<{ cssProps: string }>`
+
+const StyledSvg = styled.svg<{ cssProps: CSSProp }>`
 	width: ${(props) => props.width + 'rem'};
 	height: ${(props) => props.height + 'rem'};
 	${(props) => props.cssProps}

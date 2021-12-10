@@ -1,8 +1,16 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import Line from './Line';
+import { useSelector } from 'react-redux';
+import { RootState } from 'modules';
+import { useEffect, useRef } from 'react';
 
 function RedGreenLine() {
+	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
+	const isLoadingRef = useRef<boolean>(isLoading);
+	useEffect(() => {
+		isLoadingRef.current = isLoading;
+	}, [isLoading]);
 	return (
 		<LineDIV>
 			<Line
@@ -51,40 +59,48 @@ const LineDIV = styled.div`
 	height: 200vh;
 	overflow: hidden;
 `;
-
-const RB = `
-	position: absolute;
-	top: -51rem;
-    right: 100rem;
-	transform:rotate(45deg);
-	z-index:2;
+const rightIn = keyframes`
+	0%{transform:rotate(45deg) translate(0,-500rem);}
+	100%{transform:rotate(45deg) translate(0,0);}
 `;
 
-const GB = `
+const RB = css`
 	position: absolute;
 	top: -51rem;
-    right: 92rem;
-	transform:rotate(45deg);
-	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:2;
+	right: 100rem;
+	transform: rotate(45deg) translate(0, -500rem);
+	z-index: 2;
+	animation: ${rightIn} 1.5s 2s forwards;
 `;
 
-const RS = `
+const GB = css`
 	position: absolute;
 	top: -51rem;
-    right: 87rem;
-	transform:rotate(45deg);
+	right: 92rem;
+	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:1;
+	z-index: 2;
+	animation: ${rightIn} 1.5s 2s forwards;
 `;
 
-const GS = `
+const RS = css`
 	position: absolute;
 	top: -51rem;
-    right: 110rem;
-	transform:rotate(45deg);
+	right: 87rem;
+	transform: rotate(45deg) translate(0, -500rem);
 	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
-	z-index:1;
+	z-index: 1;
+	animation: ${rightIn} 1.5s 2s forwards;
+`;
+
+const GS = css`
+	position: absolute;
+	top: -51rem;
+	right: 110rem;
+	transform: rotate(45deg) translate(0, -500rem);
+	filter: drop-shadow(5px 4px 4px rgba(0, 0, 0, 0.25));
+	z-index: 1;
+	animation: ${rightIn} 1.5s 2s forwards;
 `;
 
 export default RedGreenLine;
