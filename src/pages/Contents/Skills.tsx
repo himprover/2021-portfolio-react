@@ -50,9 +50,10 @@ const Logo2DIV = styled.div`
 const Title = styled.h1`
 	font-size: 6rem;
 	font-weight: 400;
+	position: absolute;
 	margin: 0;
-	padding-left: 3rem;
-	padding-top: 3rem;
+	left: 3rem;
+	top: 3rem;
 `;
 
 const HTML5 = styled(HTML5SVG)`
