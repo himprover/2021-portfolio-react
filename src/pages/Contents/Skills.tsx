@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { forwardRef } from 'react';
 
 import { ReactComponent as HTML5SVG } from '../../imgs/skills/svg/HTML5.svg';
@@ -30,21 +30,45 @@ const Skills = forwardRef<any>((props, ref) => {
 
 const SkillsDIV = styled.div`
 	background: ${({ theme }: { theme: any }) => theme.skillsBgColor};
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 	overflow: hidden;
+
+	svg {
+		cursor: pointer;
+		polygon,
+		rect {
+			transition: all 0.2s ease-in-out;
+		}
+		&:hover {
+			polygon,
+			rect {
+				fill: #ffffff;
+			}
+		}
+	}
 `;
 
 const Logo1DIV = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 90vw;
+	width: 170rem;
 	margin: 0 auto;
+	polygon {
+		fill: #64646465;
+		stroke: #ffffff;
+	}
 `;
 const Logo2DIV = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 60vw;
+	width: 110rem;
 	margin: 0 auto;
-	padding-top: 10rem;
+	rect {
+		fill: #ffffff64;
+		stroke: #ffffff;
+	}
 `;
 
 const Title = styled.h1`
@@ -60,8 +84,11 @@ const HTML5 = styled(HTML5SVG)`
 	width: 30rem;
 	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
-	polygon {
-		fill: #646464;
+	z-index: 2;
+	overflow: hidden;
+
+	img {
+		z-index: 2;
 	}
 `;
 
@@ -73,9 +100,6 @@ const ES6 = styled(ES6SVG)`
 	img {
 		z-index: 2;
 	}
-	polygon {
-		fill: #646464;
-	}
 `;
 
 const REACT = styled(REACTSVG)`
@@ -86,9 +110,6 @@ const REACT = styled(REACTSVG)`
 	img {
 		z-index: 2;
 	}
-	polygon {
-		fill: #646464;
-	}
 `;
 
 const TS = styled(TSSVG)`
@@ -98,9 +119,6 @@ const TS = styled(TSSVG)`
 	z-index: 2;
 	img {
 		z-index: 2;
-	}
-	polygon {
-		fill: #646464;
 	}
 `;
 
