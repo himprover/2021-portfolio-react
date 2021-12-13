@@ -20,6 +20,7 @@ function Contact() {
 }
 
 const ContactDIV = styled.div`
+	position: relative;
 	overflow: hidden;
 	display: flex;
 	align-items: center;

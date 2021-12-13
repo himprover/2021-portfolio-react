@@ -37,6 +37,8 @@ function App() {
 	);
 }
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+	height: auto;
+`;
 
 export default App;

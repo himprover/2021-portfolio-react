@@ -26,6 +26,7 @@ function AboutMe() {
 }
 
 const AboutMeDIV = styled.div`
+	position: relative;
 	background: radial-gradient(
 		82.47% 260.66% at 16.85% 50%,
 		#474747 0%,

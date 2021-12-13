@@ -95,6 +95,7 @@ const SkillsDIV = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	overflow: hidden;
+	position: relative;
 `;
 
 const Logo1DIV = styled.div<{ nowsection: number }>`

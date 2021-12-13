@@ -36,6 +36,7 @@ function Main() {
 }
 
 const MainDIV = styled.div`
+	position: relative;
 	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
 `;
 

@@ -18,6 +18,9 @@ function Content() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	); // nowsection load
+	const direction = useSelector(
+		(state: RootState) => state.sectionHandle.direction
+	); // scroll direction load
 	const dispatch = useDispatch(); // use dispatch
 
 	const onIncrease = () => {
@@ -69,38 +72,51 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV nowSection={nowsection}>
-			<Main />
-			<Skills />
+		<>
+			<ContentDIV nowSection={nowsection} direction={direction}>
+				<Main />
+				<Skills />
+
+				<AboutMe />
+				<Contact />
+			</ContentDIV>
 			<Reference />
-			<AboutMe />
-			<Contact />
-		</ContentDIV>
+		</>
 	);
 }
 
-const ContentDIV = styled.div<{ nowSection: number }>`
+const ContentDIV = styled.div<{ nowSection: number; direction: string }>`
 	overflow: visible;
 	height: 100vh;
 	top: 0;
-	transition: all 950ms ease 0s;
 	${(props) =>
-		props.nowSection < 2
+		props.nowSection === 1 && props.direction === 'up' // Reference->Skills
 			? css`
 					transform: translateY(${-100 * props.nowSection + 'vh'});
 			  `
-			: props.nowSection === 2
-			? css`
-					transform: translateY(${-100 * 1 + 'vh'});
-			  `
-			: props.nowSection > 2
+			: props.nowSection === 3 && props.direction === 'down' // Reference->AboutMe
 			? css`
 					transform: translateY(${-100 * (props.nowSection - 1) + 'vh'});
 			  `
-			: null};
+			: props.nowSection === 2 && props.direction === 'up' // AboutMe->Reference
+			? css`
+					transform: translateY(${-100 * 2 + 'vh'});
+			  `
+			: props.nowSection === 2 && props.direction === 'down' // Skills->Reference
+			? css`
+					transform: translateY(${-100 * 1 + 'vh'});
+			  `
+			: props.nowSection < 2
+			? css`
+					transition: all 950ms ease 0s;
+					transform: translateY(${-100 * props.nowSection + 'vh'});
+			  `
+			: css`
+					transition: all 950ms ease 0s;
+					transform: translateY(${-100 * (props.nowSection - 1) + 'vh'});
+			  `}
 	& > div {
 		height: 100vh;
-		position: relative;
 	}
 `;
 

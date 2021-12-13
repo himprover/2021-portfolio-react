@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
@@ -9,9 +9,12 @@ function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
+	const direction = useSelector(
+		(state: RootState) => state.sectionHandle.direction
+	);
 	return (
-		<ReferenceDIV nowsection={nowsection}>
-			<Title>Skills</Title>
+		<ReferenceDIV nowsection={nowsection} direction={direction}>
+			<Title>Reference</Title>
 			<ListDIV>
 				<ArrowDIV>
 					<Arrow direction='right' />
@@ -26,23 +29,25 @@ function Reference() {
 	);
 }
 
-const ReferenceDIV = styled.div<{ nowsection: number }>`
+const ReferenceDIV = styled.div<{ nowsection: number; direction: string }>`
 	background: black;
 	overflow: hidden;
-	position: relative;
-	height: 100vh;
+	position: fixed;
+	top: 0;
 	z-index: 10;
-
-	/* ${(props) =>
+	width: 100%;
+	height: 100vh;
+	transition: all 0.5s;
+	${(props) =>
 		props.nowsection === 2
 			? css`
 					opacity: 1;
-					display: block;
+					visibility: visible;
 			  `
 			: css`
 					opacity: 0;
-					display: none;
-			  `} */
+					visibility: hidden;
+			  `};
 `;
 
 const Title = styled.h1`
