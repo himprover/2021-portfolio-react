@@ -4,13 +4,43 @@ import { RootState } from 'modules';
 
 import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
+import { useEffect, useState } from 'react';
 
 function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
 
-	const slideHandle = (direction: string) => {};
+	const [slide, setSlide] = useState<string[]>([
+		'center',
+		'right',
+		'',
+		'',
+		'left',
+	]);
+	const slideHandle = (direction: string) => {
+		console.log('클릭되니?' + direction);
+		let tmpArray: string[] = [...slide];
+		let tmp = '';
+		console.log(tmpArray);
+		if (direction === 'right') {
+			tmp = tmpArray[0];
+			tmpArray[0] = tmpArray[1];
+			tmpArray[1] = tmpArray[2];
+			tmpArray[2] = tmpArray[3];
+			tmpArray[3] = tmpArray[4];
+			tmpArray[4] = tmp;
+		} else {
+			tmp = tmpArray[4];
+			tmpArray[4] = tmpArray[3];
+			tmpArray[3] = tmpArray[2];
+			tmpArray[2] = tmpArray[1];
+			tmpArray[1] = tmpArray[0];
+			tmpArray[0] = tmp;
+		}
+		setSlide(tmpArray);
+		console.log(slide);
+	};
 	return (
 		<ReferenceDIV nowsection={nowsection}>
 			<Title nowsection={nowsection}>Reference</Title>
@@ -18,11 +48,11 @@ function Reference() {
 				<Arrow direction='right' onClick={() => slideHandle('right')} />
 			</ArrowDIV>
 			<ListDIV nowsection={nowsection}>
-				<List order='center' />
-				<List order='right' />
-				<List />
-				<List />
-				<List order='left' />
+				<List order={slide[0]}>1</List>
+				<List order={slide[1]}>2</List>
+				<List order={slide[2]}>3</List>
+				<List order={slide[3]}>4</List>
+				<List order={slide[4]}>5</List>
 			</ListDIV>
 			<ArrowDIV nowsection={nowsection}>
 				<Arrow direction='left' onClick={() => slideHandle('left')} />
@@ -120,10 +150,12 @@ const List = styled.div<{ order?: string }>`
 	flex-grow: 0;
 	flex-shrink: 0;
 	transform: translateX(-140rem);
+	transition: all 1s;
 	${(props) =>
 		props.order === 'center'
 			? css`
 					order: 2;
+					opacity: 1;
 			  `
 			: props.order === 'right'
 			? css`
