@@ -13,9 +13,9 @@ function Reference() {
 		(state: RootState) => state.sectionHandle.direction
 	);
 	return (
-		<ReferenceDIV nowsection={nowsection} direction={direction}>
-			<Title>Reference</Title>
-			<ListDIV>
+		<ReferenceDIV nowsection={nowsection}>
+			<Title nowsection={nowsection}>Reference</Title>
+			<ListDIV nowsection={nowsection}>
 				<ArrowDIV>
 					<Arrow direction='right' />
 				</ArrowDIV>
@@ -24,13 +24,30 @@ function Reference() {
 					<Arrow direction='left' />
 				</ArrowDIV>
 			</ListDIV>
-			<Light />
+			<Light nowsection={nowsection} />
 		</ReferenceDIV>
 	);
 }
 
-const ReferenceDIV = styled.div<{ nowsection: number; direction: string }>`
+const blink = keyframes`
+	0%{opacity:0;}
+	10%{opacity:0;}
+	11%{opacity:0.7;}
+	12%{opacity:0;}
+	13%{opacity:0.8;}
+	14%{opacity:0;}
+	15%{opacity:0.3;}
+	16%{opacity:1;}
+	17%{opacity:0;}
+	40%{opacity:0;}
+	100%{opacity:1;}
+`;
+
+const ReferenceDIV = styled.div<{ nowsection: number }>`
 	background: black;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 	overflow: hidden;
 	position: fixed;
 	top: 0;
@@ -50,33 +67,60 @@ const ReferenceDIV = styled.div<{ nowsection: number; direction: string }>`
 			  `};
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<{ nowsection: number }>`
 	font-size: 6rem;
 	font-weight: 400;
+	position: absolute;
 	margin: 0;
-	padding-left: 3rem;
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	left: 3rem;
+	top: 3rem;
+	opacity: 0;
+	${(props) =>
+		props.nowsection === 2
+			? css`
+					animation: ${blink} 0.5s 0.5s forwards;
+			  `
+			: css`
+					opacity: 1;
+			  `}
 `;
 
-const ListDIV = styled.div`
+const ListDIV = styled.div<{ nowsection: number }>`
 	display: flex;
 	height: 70vh;
+	opacity: 0;
+	${(props) =>
+		props.nowsection === 2
+			? css`
+					animation: ${blink} 0.5s 0.5s forwards;
+			  `
+			: css`
+					opacity: 1;
+			  `}
 `;
 
 const List = styled.div`
 	background: #979797;
-	//width: 80vw;
+	width: 140rem;
 	margin: 0 auto;
 `;
 
-const Light = styled(LightSVG)`
+const Light = styled(LightSVG)<{ nowsection: number }>`
 	position: absolute;
+	opacity: 0;
 	bottom: 0;
 	left: 50%;
 	width: 40rem;
 	transform: rotate(180deg) translateX(50%);
 	filter: drop-shadow(0px 10px 40px white);
+	${(props) =>
+		props.nowsection === 2
+			? css`
+					animation: ${blink} 0.5s 0.5s forwards;
+			  `
+			: css`
+					opacity: 1;
+			  `}
 `;
 
 const ArrowDIV = styled.div`
