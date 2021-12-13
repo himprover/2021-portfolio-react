@@ -6,9 +6,11 @@ import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
 
 function Reference() {
-	const count = useSelector((state: RootState) => state.counter.count);
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
 	return (
-		<ReferenceDIV nowsection={count}>
+		<ReferenceDIV nowsection={nowsection}>
 			<Title>Skills</Title>
 			<ListDIV>
 				<ArrowDIV>

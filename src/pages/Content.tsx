@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'modules';
-import { increase, decrease } from 'modules/counter';
+import { increase, decrease } from 'modules/sectionHandle';
 
 import Main from './Contents/Main';
 import Skills from './Contents/Skills';
@@ -15,7 +15,9 @@ import { throttle } from 'lodash';
 import { useEffect, useRef, useMemo } from 'react';
 
 function Content() {
-	const count = useSelector((state: RootState) => state.counter.count); // Redux_count load
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	); // nowsection load
 	const dispatch = useDispatch(); // use dispatch
 
 	const onIncrease = () => {
@@ -46,17 +48,17 @@ function Content() {
 			throttle((e) => {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
-						if (count > 0) {
+						if (nowsection > 0) {
 							onDecrease();
 						}
 					} else {
-						if (count < 4) {
+						if (nowsection < 4) {
 							onIncrease();
 						}
 					}
 				}
 			}, 300),
-		[count]
+		[nowsection]
 	);
 
 	useEffect(() => {
@@ -67,7 +69,7 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV nowSection={count}>
+		<ContentDIV nowSection={nowsection}>
 			<Main />
 			<Skills />
 			<Reference />

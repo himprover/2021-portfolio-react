@@ -12,11 +12,13 @@ import { ReactComponent as PHPSVG } from '../../imgs/skills/svg/PHP.svg';
 import Reference from './Reference';
 
 function Skills() {
-	const count = useSelector((state: RootState) => state.counter.count);
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
 	return (
 		<SkillsDIV>
 			<Title>Skills</Title>
-			<Logo1DIV nowsection={count}>
+			<Logo1DIV nowsection={nowsection}>
 				<LogoMentDIV>
 					<HTML5 />
 					<Ment>HTML5 적용 개발이 가능합니다</Ment>
@@ -38,7 +40,7 @@ function Skills() {
 					<Ment>Typescript 적용 개발이 가능합니다</Ment>
 				</LogoMentDIV>
 			</Logo1DIV>
-			<Logo2DIV nowsection={count}>
+			<Logo2DIV nowsection={nowsection}>
 				<LogoMentDIV>
 					<NEST />
 					<Ment isBottom={true}>

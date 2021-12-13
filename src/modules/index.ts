@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import counter from 'modules/counter';
+import sectionHandle from 'modules/sectionHandle';
 import loader from 'modules/loader';
 
 const rootReducer = combineReducers({
-	counter,
+	sectionHandle,
 	loader,
 });
 

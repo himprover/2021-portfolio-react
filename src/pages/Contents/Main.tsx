@@ -9,26 +9,28 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
 function Main() {
-	const count = useSelector((state: RootState) => state.counter.count);
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
 	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 	return (
 		<MainDIV>
 			<RedGreenLine />
-			<Hello nowsection={count} isloading={isLoading}>
+			<Hello nowsection={nowsection} isloading={isLoading}>
 				Hello
 			</Hello>
-			<ImHwang nowsection={count} isloading={isLoading}>
+			<ImHwang nowsection={nowsection} isloading={isLoading}>
 				I'm Hwang
 			</ImHwang>
-			<FETOP nowsection={count} isloading={isLoading}>
+			<FETOP nowsection={nowsection} isloading={isLoading}>
 				FRONT
 			</FETOP>
-			<FEBOTTOM nowsection={count} isloading={isLoading}>
+			<FEBOTTOM nowsection={nowsection} isloading={isLoading}>
 				Developer
 			</FEBOTTOM>
-			<Polygon1Styled nowsection={count} isloading={isLoading} />
-			<Polygon2Styled nowsection={count} isloading={isLoading} />
-			<HwangStyled src={Hwang} nowsection={count} isloading={isLoading} />
+			<Polygon1Styled nowsection={nowsection} isloading={isLoading} />
+			<Polygon2Styled nowsection={nowsection} isloading={isLoading} />
+			<HwangStyled src={Hwang} nowsection={nowsection} isloading={isLoading} />
 		</MainDIV>
 	);
 }
