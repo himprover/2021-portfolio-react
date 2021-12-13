@@ -41,15 +41,17 @@ const Skills = forwardRef<any>((props, ref) => {
 			<Logo2DIV nowsection={count}>
 				<LogoMentDIV>
 					<NEST />
-					<Ment>NestJS 적용 REST API서버 개발이 가능합니다</Ment>
+					<Ment isBottom={true}>
+						NestJS 적용 REST API서버 개발이 가능합니다
+					</Ment>
 				</LogoMentDIV>
 				<LogoMentDIV>
 					<NODE />
-					<Ment>NodeJS 적용 Backend 개발이 가능합니다</Ment>
+					<Ment isBottom={true}>NodeJS 적용 Backend 개발이 가능합니다</Ment>
 				</LogoMentDIV>
 				<LogoMentDIV>
 					<PHP />
-					<Ment>php 적용 Backend 개발이 가능합니다</Ment>
+					<Ment isBottom={true}>php 적용 Backend 개발이 가능합니다</Ment>
 				</LogoMentDIV>
 			</Logo2DIV>
 		</SkillsDIV>
@@ -152,14 +154,21 @@ const LogoMentDIV = styled.div`
 	}
 `;
 
-const Ment = styled.h2`
+const Ment = styled.h2<{ isBottom?: boolean }>`
 	opacity: 0;
 	width: 100%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	font-size: 2rem;
-	transform: translate(-50%, -50%);
+	${(props) =>
+		props.isBottom
+			? css`
+					transform: translate(-50%, -70%);
+			  `
+			: css`
+					transform: translate(-50%, -50%);
+			  `}
 	background: #000000be;
 	text-align: center;
 	padding-top: 5%;
