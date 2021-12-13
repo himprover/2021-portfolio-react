@@ -9,6 +9,7 @@ import { ReactComponent as TSSVG } from '../../imgs/skills/svg/TS.svg';
 import { ReactComponent as NESTSVG } from '../../imgs/skills/svg/NEST.svg';
 import { ReactComponent as NODESVG } from '../../imgs/skills/svg/NODE.svg';
 import { ReactComponent as PHPSVG } from '../../imgs/skills/svg/PHP.svg';
+import Reference from './Reference';
 
 function Skills() {
 	const count = useSelector((state: RootState) => state.counter.count);

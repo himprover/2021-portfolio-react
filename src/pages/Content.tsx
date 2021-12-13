@@ -79,14 +79,23 @@ function Content() {
 
 const ContentDIV = styled.div<{ nowSection: number }>`
 	overflow: visible;
-	position: relative;
 	height: 100vh;
 	top: 0;
 	transition: all 950ms ease 0s;
 	${(props) =>
-		css`
-			transform: translateY(${-100 * props.nowSection + 'vh'});
-		`};
+		props.nowSection < 2
+			? css`
+					transform: translateY(${-100 * props.nowSection + 'vh'});
+			  `
+			: props.nowSection === 2
+			? css`
+					transform: translateY(${-100 * 1 + 'vh'});
+			  `
+			: props.nowSection > 2
+			? css`
+					transform: translateY(${-100 * (props.nowSection - 1) + 'vh'});
+			  `
+			: null};
 	& > div {
 		height: 100vh;
 		position: relative;

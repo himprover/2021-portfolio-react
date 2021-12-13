@@ -18,7 +18,7 @@ const Menu = styled.div`
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	position: fixed;
+	position: absolute;
 	flex-direction: column;
 	justify-content: space-between;
 	top: 0;

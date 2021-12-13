@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
+import { useSelector } from 'react-redux';
+import { RootState } from 'modules';
 
 import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
 
 function Reference() {
+	const count = useSelector((state: RootState) => state.counter.count);
 	return (
-		<ReferenceDIV>
+		<ReferenceDIV nowsection={count}>
 			<Title>Skills</Title>
 			<ListDIV>
 				<ArrowDIV>
@@ -21,13 +24,23 @@ function Reference() {
 	);
 }
 
-const ReferenceDIV = styled.div`
+const ReferenceDIV = styled.div<{ nowsection: number }>`
 	background: black;
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	height: 100vh;
-	top: 0;
 	z-index: 10;
+
+	/* ${(props) =>
+		props.nowsection === 2
+			? css`
+					opacity: 1;
+					display: block;
+			  `
+			: css`
+					opacity: 0;
+					display: none;
+			  `} */
 `;
 
 const Title = styled.h1`
