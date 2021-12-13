@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { forwardRef } from 'react';
 
 import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
@@ -8,7 +7,6 @@ function Reference() {
 	return (
 		<ReferenceDIV>
 			<Title>Skills</Title>
-
 			<ListDIV>
 				<ArrowDIV>
 					<Arrow direction='right' />
@@ -18,7 +16,6 @@ function Reference() {
 					<Arrow direction='left' />
 				</ArrowDIV>
 			</ListDIV>
-
 			<Light />
 		</ReferenceDIV>
 	);
@@ -40,7 +37,6 @@ const Title = styled.h1`
 
 const ListDIV = styled.div`
 	display: flex;
-	width: 100%;
 	height: 70vh;
 `;
 

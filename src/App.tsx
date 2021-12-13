@@ -37,6 +37,8 @@ function App() {
 	);
 }
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+	width: 100vw;
+`;
 
 export default App;

@@ -79,7 +79,7 @@ function Content() {
 
 const ContentDIV = styled.div<{ nowSection: number }>`
 	overflow: visible;
-	position: fixed;
+	position: relative;
 	height: 100vh;
 	top: 0;
 	transition: all 950ms ease 0s;
