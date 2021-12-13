@@ -24,6 +24,10 @@ function Reference() {
 const ReferenceDIV = styled.div`
 	background: black;
 	overflow: hidden;
+	position: absolute;
+	height: 100vh;
+	top: 0;
+	z-index: 10;
 `;
 
 const Title = styled.h1`
@@ -42,7 +46,7 @@ const ListDIV = styled.div`
 
 const List = styled.div`
 	background: #979797;
-	width: 80vw;
+	//width: 80vw;
 	margin: 0 auto;
 `;
 
