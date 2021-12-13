@@ -17,15 +17,40 @@ const Skills = forwardRef<any>((props, ref) => {
 		<SkillsDIV ref={ref}>
 			<Title>Skills</Title>
 			<Logo1DIV nowsection={count}>
-				<HTML5 />
-				<ES6 />
-				<REACT />
-				<TS />
+				<LogoMentDIV>
+					<HTML5 />
+					<Ment>HTML5 적용 개발이 가능합니다</Ment>
+				</LogoMentDIV>
+				<LogoMentDIV>
+					<ES6 />
+					<Ment>ES6문법 적용 개발이 가능합니다</Ment>
+				</LogoMentDIV>
+				<LogoMentDIV>
+					<REACT />
+					<Ment>
+						React Functional Component w/Hooks
+						<br />
+						개발이 가능합니다
+					</Ment>
+				</LogoMentDIV>
+				<LogoMentDIV>
+					<TS />
+					<Ment>Typescript 적용 개발이 가능합니다</Ment>
+				</LogoMentDIV>
 			</Logo1DIV>
 			<Logo2DIV nowsection={count}>
-				<NEST />
-				<NODE />
-				<PHP />
+				<LogoMentDIV>
+					<NEST />
+					<Ment>NestJS 적용 REST API서버 개발이 가능합니다</Ment>
+				</LogoMentDIV>
+				<LogoMentDIV>
+					<NODE />
+					<Ment>NodeJS 적용 Backend 개발이 가능합니다</Ment>
+				</LogoMentDIV>
+				<LogoMentDIV>
+					<PHP />
+					<Ment>php 적용 Backend 개발이 가능합니다</Ment>
+				</LogoMentDIV>
 			</Logo2DIV>
 		</SkillsDIV>
 	);
@@ -66,20 +91,6 @@ const SkillsDIV = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	overflow: hidden;
-
-	svg {
-		cursor: pointer;
-		polygon,
-		rect {
-			transition: all 0.2s ease-in-out;
-		}
-		&:hover {
-			polygon,
-			rect {
-				fill: #ffffff;
-			}
-		}
-	}
 `;
 
 const Logo1DIV = styled.div<{ nowsection: number }>`
@@ -121,6 +132,40 @@ const Logo2DIV = styled.div<{ nowsection: number }>`
 	}
 `;
 
+const LogoMentDIV = styled.div`
+	transform: rotate(15deg);
+	position: relative;
+	cursor: pointer;
+	polygon,
+	rect,
+	h2 {
+		transition: all 0.2s ease-in-out;
+	}
+	&:hover {
+		polygon,
+		rect {
+			fill: #ffffff;
+		}
+		h2 {
+			opacity: 1;
+		}
+	}
+`;
+
+const Ment = styled.h2`
+	opacity: 0;
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 2rem;
+	transform: translate(-50%, -50%);
+	background: #000000be;
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
+`;
+
 const Title = styled.h1`
 	font-size: 6rem;
 	font-weight: 400;
@@ -132,12 +177,8 @@ const Title = styled.h1`
 
 const HTML5 = styled(HTML5SVG)`
 	width: 30rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
-
 	z-index: 2;
-	overflow: hidden;
-
 	img {
 		z-index: 2;
 	}
@@ -145,10 +186,8 @@ const HTML5 = styled(HTML5SVG)`
 
 const ES6 = styled(ES6SVG)`
 	width: 30rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
-
 	img {
 		z-index: 2;
 	}
@@ -156,7 +195,6 @@ const ES6 = styled(ES6SVG)`
 
 const REACT = styled(REACTSVG)`
 	width: 30rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
 	img {
@@ -166,7 +204,6 @@ const REACT = styled(REACTSVG)`
 
 const TS = styled(TSSVG)`
 	width: 30rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
 	img {
@@ -176,7 +213,6 @@ const TS = styled(TSSVG)`
 
 const NEST = styled(NESTSVG)`
 	width: 20rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
 	img {
@@ -186,7 +222,6 @@ const NEST = styled(NESTSVG)`
 
 const NODE = styled(NODESVG)`
 	width: 20rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
 	img {
@@ -196,7 +231,6 @@ const NODE = styled(NODESVG)`
 
 const PHP = styled(PHPSVG)`
 	width: 20rem;
-	transform: rotate(15deg);
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
 	img {
