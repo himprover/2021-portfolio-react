@@ -17,10 +17,12 @@ type SectionAction =
 
 type SectionState = {
 	nowsection: number;
+	direction: string;
 };
 
 const initialState: SectionState = {
 	nowsection: 0,
+	direction: 'down',
 };
 
 function sectionHandle(
@@ -29,11 +31,14 @@ function sectionHandle(
 ): SectionState {
 	switch (action.type) {
 		case INCREASE:
-			return { nowsection: state.nowsection + 1 };
+			return { nowsection: state.nowsection + 1, direction: 'down' };
 		case DECREASE:
-			return { nowsection: state.nowsection - 1 };
+			return { nowsection: state.nowsection - 1, direction: 'up' };
 		case INCREASE_BY:
-			return { nowsection: state.nowsection + action.payload };
+			return {
+				nowsection: state.nowsection + action.payload,
+				direction: 'down',
+			};
 		default:
 			return state;
 	}
