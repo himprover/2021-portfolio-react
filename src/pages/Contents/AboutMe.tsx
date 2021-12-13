@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { forwardRef } from 'react';
 
 import HobbyPng1 from 'imgs/hobby/png/hobby1.png';
 import HobbyPng2 from 'imgs/hobby/png/hobby2.png';
-const AboutMe = forwardRef<any>((props, ref) => {
+function AboutMe() {
 	return (
-		<AboutMeDIV ref={ref}>
+		<AboutMeDIV>
 			<ImgArea>
 				<Title>About Me</Title>
 				<HobbyImg1 src={HobbyPng1} />
@@ -24,7 +23,7 @@ const AboutMe = forwardRef<any>((props, ref) => {
 			</MentArea>
 		</AboutMeDIV>
 	);
-});
+}
 
 const AboutMeDIV = styled.div`
 	background: radial-gradient(

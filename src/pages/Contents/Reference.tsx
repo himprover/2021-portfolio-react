@@ -4,9 +4,9 @@ import { forwardRef } from 'react';
 import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
 
-const Reference = forwardRef<any>((props, ref) => {
+function Reference() {
 	return (
-		<ReferenceDIV ref={ref}>
+		<ReferenceDIV>
 			<Title>Skills</Title>
 
 			<ListDIV>
@@ -22,7 +22,7 @@ const Reference = forwardRef<any>((props, ref) => {
 			<Light />
 		</ReferenceDIV>
 	);
-});
+}
 
 const ReferenceDIV = styled.div`
 	background: black;

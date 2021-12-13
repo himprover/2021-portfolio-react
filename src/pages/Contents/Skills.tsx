@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
@@ -11,10 +10,10 @@ import { ReactComponent as NESTSVG } from '../../imgs/skills/svg/NEST.svg';
 import { ReactComponent as NODESVG } from '../../imgs/skills/svg/NODE.svg';
 import { ReactComponent as PHPSVG } from '../../imgs/skills/svg/PHP.svg';
 
-const Skills = forwardRef<any>((props, ref) => {
+function Skills() {
 	const count = useSelector((state: RootState) => state.counter.count);
 	return (
-		<SkillsDIV ref={ref}>
+		<SkillsDIV>
 			<Title>Skills</Title>
 			<Logo1DIV nowsection={count}>
 				<LogoMentDIV>
@@ -56,7 +55,7 @@ const Skills = forwardRef<any>((props, ref) => {
 			</Logo2DIV>
 		</SkillsDIV>
 	);
-});
+}
 
 const rightMove = keyframes`
 	from {

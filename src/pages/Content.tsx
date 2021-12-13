@@ -15,13 +15,6 @@ import { throttle } from 'lodash';
 import { useEffect, useRef, useMemo } from 'react';
 
 function Content() {
-	const contentRef = useRef<HTMLDivElement>(null);
-	const mainRef = useRef<HTMLDivElement>(null);
-	const skillsRef = useRef<HTMLDivElement>(null);
-	const referenceRef = useRef<HTMLDivElement>(null);
-	const aboutmeRef = useRef<HTMLDivElement>(null);
-	const contactRef = useRef<HTMLDivElement>(null);
-
 	const count = useSelector((state: RootState) => state.counter.count); // Redux_count load
 	const dispatch = useDispatch(); // use dispatch
 
@@ -74,12 +67,12 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV ref={contentRef} nowSection={count}>
-			<Main ref={mainRef} />
-			<Skills ref={skillsRef} />
-			<Reference ref={referenceRef} />
-			<AboutMe ref={aboutmeRef} />
-			<Contact ref={contactRef} />
+		<ContentDIV nowSection={count}>
+			<Main />
+			<Skills />
+			<Reference />
+			<AboutMe />
+			<Contact />
 		</ContentDIV>
 	);
 }

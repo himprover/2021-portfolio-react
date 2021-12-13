@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { forwardRef } from 'react';
 
 import ContactBG from '../../components/ContactBG';
 
-const Contact = forwardRef<any>((props, ref) => {
+function Contact() {
 	return (
-		<ContactDIV ref={ref}>
+		<ContactDIV>
 			<ContactBG />
 			<MainDIV>
 				<RowDIV>
@@ -18,7 +17,7 @@ const Contact = forwardRef<any>((props, ref) => {
 			</MainDIV>
 		</ContactDIV>
 	);
-});
+}
 
 const ContactDIV = styled.div`
 	overflow: hidden;

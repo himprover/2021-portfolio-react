@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { forwardRef } from 'react';
 
 import Hwang from 'imgs/main/Hwang.png';
 import { ReactComponent as Polygon1 } from 'imgs/main/polygon1.svg';
@@ -9,11 +8,11 @@ import RedGreenLine from 'components/RedGreenLine';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
-const Main = forwardRef<any>((props, ref) => {
+function Main() {
 	const count = useSelector((state: RootState) => state.counter.count);
 	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 	return (
-		<MainDIV ref={ref}>
+		<MainDIV>
 			<RedGreenLine />
 			<Hello nowsection={count} isloading={isLoading}>
 				Hello
@@ -32,7 +31,7 @@ const Main = forwardRef<any>((props, ref) => {
 			<HwangStyled src={Hwang} nowsection={count} isloading={isLoading} />
 		</MainDIV>
 	);
-});
+}
 
 const MainDIV = styled.div`
 	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
