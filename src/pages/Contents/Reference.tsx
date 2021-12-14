@@ -9,6 +9,7 @@ import One from 'components/References/One';
 import Two from 'components/References/Two';
 import Three from 'components/References/Three';
 import Four from 'components/References/Four';
+import Five from 'components/References/Five';
 
 function Reference() {
 	const nowsection = useSelector(
@@ -44,7 +45,7 @@ function Reference() {
 				<Two isShow={slide === 1 ? true : false} />
 				<Three isShow={slide === 2 ? true : false} />
 				<Four isShow={slide === 3 ? true : false} />
-				<One isShow={slide === 4 ? true : false} />
+				<Five isShow={slide === 4 ? true : false} />
 				<One isShow={slide === 5 ? true : false} />
 			</ListDIV>
 			<ArrowDIV nowsection={nowsection}>
