@@ -10,8 +10,11 @@ export const Title = styled.h2`
 	top: 0;
 	left: 0;
 	width: 50%;
-	background: #00000092;
+	font-size: 2.5rem;
+	font-weight: 400;
+	background: #00000022;
 	backdrop-filter: blur(5px);
+	border: 1px solid #ffffff30;
 	filter: drop-shadow(0px 0px 10px #0000008d);
 `;
 
@@ -22,12 +25,14 @@ export const RefImg = styled.img`
 	transform: translate(-50%, -50%);
 	width: 105%;
 	height: 105%;
-	filter: blur(2px) brightness(90%);
+	filter: blur(1px) brightness(90%);
+	object-fit: cover;
 `;
 export const RefComment = styled.h3`
 	position: absolute;
-	font-size: 3rem;
-	font-weight: 400;
+	font-size: 2.5rem;
+	line-height: 3.5rem;
+	font-weight: 200;
 	width: 90%;
 	z-index: 1;
 	top: 68%;
@@ -36,6 +41,7 @@ export const RefComment = styled.h3`
 	right: 50%;
 	transform: translateX(50%);
 	background: #00000045;
+	border: 1px solid #ffffff30;
 	backdrop-filter: blur(5px);
 	filter: drop-shadow(5px 5px 2px #000000a7);
 `;
