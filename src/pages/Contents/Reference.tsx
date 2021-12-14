@@ -7,6 +7,7 @@ import { ReactComponent as LightSVG } from 'imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from 'imgs/reference/svg/arrow.svg';
 import One from 'components/References/One';
 import Two from 'components/References/Two';
+import Three from 'components/References/Three';
 
 function Reference() {
 	const nowsection = useSelector(
@@ -40,7 +41,7 @@ function Reference() {
 			<ListDIV nowsection={nowsection} className={isoff ? 'Off' : ''}>
 				<One isShow={slide === 0 ? true : false} />
 				<Two isShow={slide === 1 ? true : false} />
-				<One isShow={slide === 2 ? true : false} />
+				<Three isShow={slide === 2 ? true : false} />
 				<One isShow={slide === 3 ? true : false} />
 				<One isShow={slide === 4 ? true : false} />
 				<One isShow={slide === 5 ? true : false} />
