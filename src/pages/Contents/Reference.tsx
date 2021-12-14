@@ -41,7 +41,7 @@ function Reference() {
 			tmpArray[0] = tmp;
 		}
 		setSlide(tmpArray);
-		const onoffHandle = setTimeout(() => {
+		setTimeout(() => {
 			setOn((on) => !on);
 		}, 1);
 		setOn((on) => !on);
