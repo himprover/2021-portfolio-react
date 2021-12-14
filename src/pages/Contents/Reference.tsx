@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ReactComponent as LightSVG } from 'imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from 'imgs/reference/svg/arrow.svg';
 import One from 'components/References/One';
+import Two from 'components/References/Two';
 
 function Reference() {
 	const nowsection = useSelector(
@@ -34,18 +35,18 @@ function Reference() {
 		<ReferenceDIV nowsection={nowsection}>
 			<Title nowsection={nowsection}>Reference</Title>
 			<ArrowDIV nowsection={nowsection}>
-				<Arrow direction='right' onClick={() => slideHandle('right')} />
+				<Arrow direction='left' onClick={() => slideHandle('left')} />
 			</ArrowDIV>
 			<ListDIV nowsection={nowsection} className={isoff ? 'Off' : ''}>
 				<One isShow={slide === 0 ? true : false} />
-				<One isShow={slide === 1 ? true : false} />
+				<Two isShow={slide === 1 ? true : false} />
 				<One isShow={slide === 2 ? true : false} />
 				<One isShow={slide === 3 ? true : false} />
 				<One isShow={slide === 4 ? true : false} />
 				<One isShow={slide === 5 ? true : false} />
 			</ListDIV>
 			<ArrowDIV nowsection={nowsection}>
-				<Arrow direction='left' onClick={() => slideHandle('left')} />
+				<Arrow direction='right' onClick={() => slideHandle('right')} />
 			</ArrowDIV>
 			<Light nowsection={nowsection} className={isoff ? 'Off' : ''} />
 			<Light nowsection={nowsection} className={isoff ? 'Sub Off' : 'Sub'} />
@@ -196,7 +197,7 @@ const Arrow = styled(ArrowSVG)`
 	display: block;
 	cursor: pointer;
 	${(props) =>
-		props.direction === 'right'
+		props.direction === 'left'
 			? css`
 					transform: rotate(180deg);
 			  `
