@@ -11,41 +11,23 @@ function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
-
-	const [on, setOn] = useState(true);
-
-	const [slide, setSlide] = useState<string[]>([
-		'center',
-		'right',
-		'',
-		'',
-		'left',
-	]);
+	const [slide, setSlide] = useState<number>(0);
+	const [isoff, setOff] = useState<boolean>(false);
 
 	const slideHandle = (direction: string) => {
-		let tmpArray: string[] = [...slide];
-		let tmp = '';
-
 		if (direction === 'right') {
-			tmp = tmpArray[0];
-			tmpArray[0] = tmpArray[1];
-			tmpArray[1] = tmpArray[2];
-			tmpArray[2] = tmpArray[3];
-			tmpArray[3] = tmpArray[4];
-			tmpArray[4] = tmp;
+			slide === 5
+				? setSlide((slide) => slide - 5)
+				: setSlide((slide) => slide + 1);
 		} else {
-			tmp = tmpArray[4];
-			tmpArray[4] = tmpArray[3];
-			tmpArray[3] = tmpArray[2];
-			tmpArray[2] = tmpArray[1];
-			tmpArray[1] = tmpArray[0];
-			tmpArray[0] = tmp;
+			slide === 0
+				? setSlide((slide) => slide + 5)
+				: setSlide((slide) => slide - 1);
 		}
-		setSlide(tmpArray);
 		setTimeout(() => {
-			setOn((on) => !on);
+			setOff((isoff) => !isoff);
 		}, 1);
-		setOn((on) => !on);
+		setOff((isoff) => !isoff);
 	};
 
 	return (
@@ -54,20 +36,19 @@ function Reference() {
 			<ArrowDIV nowsection={nowsection}>
 				<Arrow direction='right' onClick={() => slideHandle('right')} />
 			</ArrowDIV>
-			<ListDIV nowsection={nowsection}>
-				<List order={slide[0]}>
-					<One />
-				</List>
-				<List order={slide[1]}>2</List>
-				<List order={slide[2]}>3</List>
-				<List order={slide[3]}>4</List>
-				<List order={slide[4]}>5</List>
+			<ListDIV nowsection={nowsection} className={isoff ? 'Off' : ''}>
+				<One isShow={slide === 0 ? true : false} />
+				<One isShow={slide === 1 ? true : false} />
+				<One isShow={slide === 2 ? true : false} />
+				<One isShow={slide === 3 ? true : false} />
+				<One isShow={slide === 4 ? true : false} />
+				<One isShow={slide === 5 ? true : false} />
 			</ListDIV>
 			<ArrowDIV nowsection={nowsection}>
 				<Arrow direction='left' onClick={() => slideHandle('left')} />
 			</ArrowDIV>
-			<Light nowsection={nowsection} ison={on} />
-			<Light nowsection={nowsection} issub={true} ison={on} />
+			<Light nowsection={nowsection} className={isoff ? 'Off' : ''} />
+			<Light nowsection={nowsection} className={isoff ? 'Sub Off' : 'Sub'} />
 		</ReferenceDIV>
 	);
 }
@@ -157,50 +138,13 @@ const ListDIV = styled.div<{ nowsection: number }>`
 			: css`
 					opacity: 1;
 			  `}
+
+	&.Off {
+		display: none;
+	}
 `;
 
-const List = styled.div<{ order?: string }>`
-	position: absolute;
-	display: flex;
-	flex-grow: 0;
-	flex-shrink: 0;
-	flex-basis: 140rem;
-	flex-direction: column;
-	justify-content: space-around;
-	left: 0;
-	top: 0;
-
-	width: 100%;
-	height: 70vh;
-	margin: 0 auto;
-	border: 1px solid black;
-
-	transition: all 1s;
-	${(props) =>
-		props.order === 'center'
-			? css`
-					opacity: 1;
-			  `
-			: props.order === 'right'
-			? css`
-					transform: translateX(140rem);
-					opacity: 0;
-			  `
-			: props.order === 'left'
-			? css`
-					transform: translateX(-140rem);
-					opacity: 0;
-			  `
-			: css`
-					display: none;
-			  `};
-`;
-
-const Light = styled(LightSVG)<{
-	nowsection: number;
-	issub?: boolean;
-	ison: boolean;
-}>`
+const Light = styled(LightSVG)<{ nowsection: number }>`
 	position: absolute;
 	opacity: 0;
 	bottom: 0;
@@ -208,25 +152,26 @@ const Light = styled(LightSVG)<{
 	width: 40rem;
 	transform: rotate(180deg) translateX(50%);
 	filter: drop-shadow(0px 10px 40px white);
+	&.Sub {
+		${(props) =>
+			props.nowsection === 2
+				? css`
+						animation: ${bright} 1.5s 1s infinite alternate ease-in-out;
+				  `
+				: null}
+	}
+	&.Off {
+		display: none;
+	}
+
 	${(props) =>
-		props.nowsection === 2 && props.issub
-			? css`
-					animation: ${bright} 1.5s 1s infinite alternate ease-in-out;
-			  `
-			: props.nowsection === 2
+		props.nowsection === 2
 			? css`
 					animation: ${blink} 0.5s 0.5s forwards;
 			  `
 			: css`
 					opacity: 1;
 			  `}
-
-	${(props) =>
-		props.ison === false
-			? css`
-					display: none;
-			  `
-			: null}
 `;
 
 const ArrowDIV = styled.div<{ nowsection: number }>`
