@@ -1,4 +1,4 @@
-import { List, Title, RefImg, RefComment, UseSkill } from './styled';
+import { List, Title, RefImg, RefComment, UseSkill, RedText } from './styled';
 
 import Imgsrc from 'imgs/reference/png/Three.png';
 
@@ -14,6 +14,11 @@ function Three({ isShow }: { isShow: boolean }) {
 				<br />
 				세부적인 keyframes 설정을 통한 animation 개발을 통해 animation을 활용한
 				개발에 관심을 가지게 되었다.
+				<br />
+				<RedText>
+					페이지의 규모가 커지며 <b>React의 필요성을 몸으로</b> 깨닫게 되는
+					계기가 된다.
+				</RedText>
 				<br />
 				FE는 jQuery, BE는 Nodejs(w/Express)로 구성.
 			</RefComment>
