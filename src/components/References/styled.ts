@@ -72,3 +72,8 @@ export const List = styled.div`
 		display: none;
 	}
 `;
+
+export const RedText = styled.span`
+	color: red;
+	box-shadow: inset 0 0px 0 white, inset 0 -1px 0 red;
+`;
