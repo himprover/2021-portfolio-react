@@ -4,12 +4,14 @@ import { RootState } from 'modules';
 
 import { ReactComponent as LightSVG } from '../../imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from '../../imgs/reference/svg/arrow.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
+
+	const [on, setOn] = useState(true);
 
 	const [slide, setSlide] = useState<string[]>([
 		'center',
@@ -18,12 +20,12 @@ function Reference() {
 		'',
 		'left',
 	]);
+
 	const slideHandle = (direction: string) => {
-		console.log('클릭되니?' + direction);
 		let tmpArray: string[] = [...slide];
 		let tmp = '';
-		console.log(tmpArray);
-		if (direction === 'right') {
+
+		if (direction === 'left') {
 			tmp = tmpArray[0];
 			tmpArray[0] = tmpArray[1];
 			tmpArray[1] = tmpArray[2];
@@ -39,8 +41,12 @@ function Reference() {
 			tmpArray[0] = tmp;
 		}
 		setSlide(tmpArray);
-		console.log(slide);
+		const onoffHandle = setTimeout(() => {
+			setOn((on) => !on);
+		}, 1);
+		setOn((on) => !on);
 	};
+
 	return (
 		<ReferenceDIV nowsection={nowsection}>
 			<Title nowsection={nowsection}>Reference</Title>
@@ -57,7 +63,8 @@ function Reference() {
 			<ArrowDIV nowsection={nowsection}>
 				<Arrow direction='left' onClick={() => slideHandle('left')} />
 			</ArrowDIV>
-			<Light nowsection={nowsection} />
+			<Light nowsection={nowsection} ison={on} />
+			<Light nowsection={nowsection} issub={true} ison={on} />
 		</ReferenceDIV>
 	);
 }
@@ -74,6 +81,13 @@ const blink = keyframes`
 	17%{opacity:0;}
 	40%{opacity:0;}
 	100%{opacity:1;}
+`;
+
+const bright = keyframes`
+	from{filter: drop-shadow(0px 10px 50px white);
+	opacity:0;}
+	to{filter: drop-shadow(0px 15px 55px white);
+	opacity:1;}
 `;
 
 const opacityShow = keyframes`
@@ -128,6 +142,7 @@ const ListDIV = styled.div<{ nowsection: number }>`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	position: relative;
 	width: 140rem;
 	height: 70vh;
 	opacity: 0;
@@ -142,29 +157,31 @@ const ListDIV = styled.div<{ nowsection: number }>`
 `;
 
 const List = styled.div<{ order?: string }>`
+	position: absolute;
+	left: 0;
+	top: 0;
 	background: #979797;
 	flex-basis: 140rem;
+	width: 100%;
 	height: 70vh;
 	margin: 0 auto;
 	border: 1px solid black;
 	flex-grow: 0;
 	flex-shrink: 0;
-	transform: translateX(-140rem);
 	transition: all 1s;
 	${(props) =>
 		props.order === 'center'
 			? css`
-					order: 2;
 					opacity: 1;
 			  `
 			: props.order === 'right'
 			? css`
-					order: 3;
+					transform: translateX(-140rem);
 					opacity: 0;
 			  `
 			: props.order === 'left'
 			? css`
-					order: 1;
+					transform: translateX(140rem);
 					opacity: 0;
 			  `
 			: css`
@@ -172,7 +189,11 @@ const List = styled.div<{ order?: string }>`
 			  `};
 `;
 
-const Light = styled(LightSVG)<{ nowsection: number }>`
+const Light = styled(LightSVG)<{
+	nowsection: number;
+	issub?: boolean;
+	ison: boolean;
+}>`
 	position: absolute;
 	opacity: 0;
 	bottom: 0;
@@ -181,13 +202,24 @@ const Light = styled(LightSVG)<{ nowsection: number }>`
 	transform: rotate(180deg) translateX(50%);
 	filter: drop-shadow(0px 10px 40px white);
 	${(props) =>
-		props.nowsection === 2
+		props.nowsection === 2 && props.issub
+			? css`
+					animation: ${bright} 1.5s 1s infinite alternate ease-in-out;
+			  `
+			: props.nowsection === 2
 			? css`
 					animation: ${blink} 0.5s 0.5s forwards;
 			  `
 			: css`
 					opacity: 1;
 			  `}
+
+	${(props) =>
+		props.ison === false
+			? css`
+					display: none;
+			  `
+			: null}
 `;
 
 const ArrowDIV = styled.div<{ nowsection: number }>`
