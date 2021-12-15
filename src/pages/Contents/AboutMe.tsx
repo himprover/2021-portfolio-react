@@ -15,11 +15,23 @@ function AboutMe() {
 				<MentSub>
 					'목에 담이 걸리면 아픈 원리는 뭘까?' 라는 사소한 일상적인 상황도
 					<br />
-					궁금한 것은 찾아보고 알아보는 성격입니다.
+					궁금한 것은 <b>찾아보고 알아보는 성격</b>입니다.
 				</MentSub>
-				<MentSub>알아가는 행위를 즐기며, 그 만큼 노는 것도 좋아합니다.</MentSub>
-				<MentSub>게으른 성격으로, 최고의 효율을 좋아합니다.</MentSub>
+				<MentSub>
+					좋아하는 사람들과 <b>이야기</b>하는 것을 좋아합니다.
+				</MentSub>
+				<MentSub>
+					알아가는 행위를 즐기며, 그 만큼 <b>노는 것</b>도 좋아합니다.
+				</MentSub>
+				<MentSub>
+					<b>게으른 성격</b>으로, <b>최고의 효율</b>을 좋아합니다.
+				</MentSub>
 				<MentSub>여행·사진, 운전이 취미며 수영을 좋아합니다.</MentSub>
+				<br />
+				<Info>병역사항 : 현역(1급) 산업기능요원 복무중 (훈련소 수료)</Info>
+				<Info>
+					학력사항 : 숭실대학교 소프트웨어학부 휴학 / 학점은행제 학사 준비중
+				</Info>
 			</MentArea>
 		</AboutMeDIV>
 	);
@@ -27,14 +39,9 @@ function AboutMe() {
 
 const AboutMeDIV = styled.div`
 	position: relative;
-	background: radial-gradient(
-		82.47% 260.66% at 16.85% 50%,
-		#474747 0%,
-		#2e2e2e 20.83%,
-		#212121 100%
-	);
 	display: flex;
 	align-items: center;
+	justify-content: space-around;
 `;
 
 const ImgArea = styled.div`
@@ -44,7 +51,7 @@ const ImgArea = styled.div`
 const MentArea = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 60%;
+	width: 50%;
 `;
 
 const Title = styled.h1`
@@ -83,7 +90,16 @@ const MentTitle = styled.h2`
 
 const MentSub = styled.h3`
 	font-size: 3rem;
-	font-weight: 300;
+	font-weight: 200;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+`;
+
+const Info = styled.h3`
+	font-size: 3rem;
+	font-weight: 500;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 `;
 
 export default AboutMe;
