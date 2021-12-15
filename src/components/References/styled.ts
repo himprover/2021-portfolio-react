@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const SkillShow = keyframes`
+	from{
+		opacity:0;
+	} to {
+		opacity:1;
+	}
+`;
 
 export const Title = styled.h2`
 	position: absolute;
@@ -67,6 +75,11 @@ export const List = styled.div`
 	height: 70vh;
 	margin: 0 auto;
 	overflow: hidden;
+
+	& > div:last-child {
+		opacity: 0;
+		animation: ${SkillShow} 0.5s 1s ease forwards;
+	}
 
 	&.nowShow {
 		display: none;
