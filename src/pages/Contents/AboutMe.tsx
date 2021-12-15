@@ -5,15 +5,23 @@ import HobbyPng2 from 'imgs/hobby/png/hobby2.png';
 
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
+import { useState } from 'react';
 function AboutMe() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
+	const [flash, setFlash] = useState<boolean>(true);
+	const flashHandler = () => {
+		setFlash((flash) => !flash);
+	};
 	return (
 		<AboutMeDIV>
 			<Title>About Me</Title>
+			<FlashBtn onClick={flashHandler}>
+				{flash ? '플래시끄기' : '플래시켜기'}
+			</FlashBtn>
 			<ImgArea>
-				<FlashEffect nowsection={nowsection} />
+				<FlashEffect nowsection={nowsection} className={`flash${flash}`} />
 				<HobbyImg1 src={HobbyPng1} nowsection={nowsection} />
 				<HobbyImg2 src={HobbyPng2} nowsection={nowsection} />
 			</ImgArea>
@@ -98,19 +106,30 @@ const Title = styled.h1`
 
 const flash = keyframes`
 	0%{
-		display:none;
+		visibility:hidden;
 		opacity:0;
 	} 1%{
-		display:block;
+		visibility:visible;
 		opacity:0;
 	} 49%{
 		opacity:1;
-	} 99% {
-		opacity:0;
-		display:block;
 	} 100% {
-		display:none;
+		opacity:0;
+		visibility:hidden;
 	}
+`;
+
+const FlashBtn = styled.button`
+	position: absolute;
+	cursor: pointer;
+	background: white;
+	border: none;
+	border-radius: 1rem;
+	font-size: 2rem;
+	font-weight: 500;
+	left: 10rem;
+	top: 20%;
+	z-index: 2;
 `;
 
 const HobbyImg1 = styled.img<{ nowsection: number }>`
@@ -168,6 +187,10 @@ const FlashEffect = styled.div<{ nowsection: number }>`
 					animation: ${flash} 0.3s 0.9s ease-in-out forwards;
 			  `
 			: css``}
+
+	&.flashfalse {
+		visibility: hidden !important;
+	}
 `;
 
 const MentTitle = styled.h2`
