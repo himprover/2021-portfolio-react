@@ -1,6 +1,7 @@
 import { List, Title, RefImg, RefComment, UseSkill } from './styled';
 
 import Imgsrc from 'imgs/reference/png/One.png';
+import Icon from './Icon';
 
 function One({ isShow }: { isShow: boolean }) {
 	return (
@@ -19,7 +20,9 @@ function One({ isShow }: { isShow: boolean }) {
 				<br />
 				FE는 React(w/typescript), BE는 NestJS로 구성.
 			</RefComment>
-			<UseSkill></UseSkill>
+			<UseSkill>
+				<Icon name='React' />
+			</UseSkill>
 		</List>
 	);
 }
