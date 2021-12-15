@@ -38,8 +38,10 @@ function Reference() {
 	return (
 		<ReferenceDIV nowsection={nowsection}>
 			<Title nowsection={nowsection}>Reference</Title>
-			<ArrowDIV nowsection={nowsection}>
-				<Arrow direction='left' onClick={() => slideHandle('left')} />
+			<ArrowDIV nowsection={nowsection} onClick={() => slideHandle('left')}>
+				<Arrow className='left' />
+				<Arrow className='left' />
+				<Arrow className='left' />
 			</ArrowDIV>
 			<ListDIV nowsection={nowsection} className={isoff ? 'Off' : ''}>
 				<One isShow={slide === 0 ? true : false} />
@@ -50,8 +52,10 @@ function Reference() {
 				<Six isShow={slide === 5 ? true : false} />
 				<Seven isShow={slide === 6 ? true : false} />
 			</ListDIV>
-			<ArrowDIV nowsection={nowsection}>
-				<Arrow direction='right' onClick={() => slideHandle('right')} />
+			<ArrowDIV nowsection={nowsection} onClick={() => slideHandle('right')}>
+				<Arrow className='right' />
+				<Arrow className='right' />
+				<Arrow className='right' />
 			</ArrowDIV>
 			<Light nowsection={nowsection} className={isoff ? 'Off' : ''} />
 			<Light
@@ -203,6 +207,7 @@ const ArrowDIV = styled.div<{ nowsection: number }>`
 	justify-content: center;
 	width: 10vw;
 	opacity: 0;
+	cursor: pointer;
 	z-index: 5;
 	${(props) =>
 		props.nowsection === 2
@@ -214,16 +219,46 @@ const ArrowDIV = styled.div<{ nowsection: number }>`
 			  `}
 `;
 
+const arrowKeyRight = keyframes`
+	0%{
+		transform:translate(-100%);
+		opacity:0;
+	} 50%{opacity:1;} 100% {
+		transform:translate(100%);
+		opacity:0;
+	}
+`;
+const arrowKeyLeft = keyframes`
+	0%{
+		transform:translate(100%) rotate(180deg);
+		opacity:0;
+	} 50%{opacity:1;} 100% {
+		transform:translate(-100%) rotate(180deg);
+		opacity:0;
+	}
+`;
 const Arrow = styled(ArrowSVG)`
 	width: 3rem;
 	display: block;
-	cursor: pointer;
-	${(props) =>
-		props.direction === 'left'
-			? css`
-					transform: rotate(180deg);
-			  `
-			: ''};
+
+	&.right:nth-child(1) {
+		animation: ${arrowKeyRight} 2s infinite;
+	}
+	&.right:nth-child(2) {
+		animation: ${arrowKeyRight} 2s 0.1s infinite;
+	}
+	&.right:nth-child(3) {
+		animation: ${arrowKeyRight} 2s 0.2s infinite;
+	}
+	&.left:nth-child(1) {
+		animation: ${arrowKeyLeft} 2s 0.2s infinite;
+	}
+	&.left:nth-child(2) {
+		animation: ${arrowKeyLeft} 2s 0.1s infinite;
+	}
+	&.left:nth-child(3) {
+		animation: ${arrowKeyLeft} 2s infinite;
+	}
 `;
 
 export default Reference;
