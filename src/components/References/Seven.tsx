@@ -1,6 +1,7 @@
 import { List, Title, RefImg, RefComment, UseSkill } from './styled';
 
 import Imgsrc from 'imgs/reference/png/Seven.png';
+import Icon from './Icon';
 
 function Seven({ isShow }: { isShow: boolean }) {
 	return (
@@ -18,7 +19,11 @@ function Seven({ isShow }: { isShow: boolean }) {
 				<br />
 				FE는 React(w/typescript), BE는 Null 구성.
 			</RefComment>
-			<UseSkill></UseSkill>
+			<UseSkill>
+				<Icon name='React' />
+				<Icon name='Ts' />
+				<Icon name='Html' />
+			</UseSkill>
 		</List>
 	);
 }

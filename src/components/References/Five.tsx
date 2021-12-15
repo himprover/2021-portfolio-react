@@ -1,4 +1,5 @@
 import { List, Title, RefImg, RefComment, UseSkill } from './styled';
+import Icon from './Icon';
 
 import Imgsrc from 'imgs/reference/png/Five.png';
 
@@ -18,7 +19,11 @@ function Five({ isShow }: { isShow: boolean }) {
 				<br />
 				FE는 jQuery, BE는 Nodejs(w/Express)로 구성.
 			</RefComment>
-			<UseSkill></UseSkill>
+			<UseSkill>
+				<Icon name='Html' />
+				<Icon name='Jquery' />
+				<Icon name='Node' />
+			</UseSkill>
 		</List>
 	);
 }

@@ -1,6 +1,7 @@
 import { List, Title, RefImg, RefComment, UseSkill } from './styled';
 
 import Imgsrc from 'imgs/reference/png/Two.png';
+import Icon from './Icon';
 
 function Two({ isShow }: { isShow: boolean }) {
 	return (
@@ -17,7 +18,11 @@ function Two({ isShow }: { isShow: boolean }) {
 				<br />
 				FE는 jQuery, BE는 Nodejs(w/Express)로 구성.
 			</RefComment>
-			<UseSkill></UseSkill>
+			<UseSkill>
+				<Icon name='Html' />
+				<Icon name='Jquery' />
+				<Icon name='Node' />
+			</UseSkill>
 		</List>
 	);
 }
