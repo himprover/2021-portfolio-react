@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
@@ -11,12 +10,14 @@ import { ReactComponent as NESTSVG } from '../../imgs/skills/svg/NEST.svg';
 import { ReactComponent as NODESVG } from '../../imgs/skills/svg/NODE.svg';
 import { ReactComponent as PHPSVG } from '../../imgs/skills/svg/PHP.svg';
 
-const Skills = forwardRef<any>((props, ref) => {
-	const count = useSelector((state: RootState) => state.counter.count);
+function Skills() {
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
 	return (
-		<SkillsDIV ref={ref}>
+		<SkillsDIV>
 			<Title>Skills</Title>
-			<Logo1DIV nowsection={count}>
+			<Logo1DIV nowsection={nowsection}>
 				<LogoMentDIV>
 					<HTML5 />
 					<Ment>HTML5 적용 개발이 가능합니다</Ment>
@@ -38,7 +39,7 @@ const Skills = forwardRef<any>((props, ref) => {
 					<Ment>Typescript 적용 개발이 가능합니다</Ment>
 				</LogoMentDIV>
 			</Logo1DIV>
-			<Logo2DIV nowsection={count}>
+			<Logo2DIV nowsection={nowsection}>
 				<LogoMentDIV>
 					<NEST />
 					<Ment isBottom={true}>
@@ -56,7 +57,7 @@ const Skills = forwardRef<any>((props, ref) => {
 			</Logo2DIV>
 		</SkillsDIV>
 	);
-});
+}
 
 const rightMove = keyframes`
 	from {
@@ -93,6 +94,7 @@ const SkillsDIV = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	overflow: hidden;
+	position: relative;
 `;
 
 const Logo1DIV = styled.div<{ nowsection: number }>`

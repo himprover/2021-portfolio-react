@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'modules';
-import { increase, decrease } from 'modules/counter';
+import { increase, decrease } from 'modules/sectionHandle';
 
 import Main from './Contents/Main';
 import Skills from './Contents/Skills';
@@ -15,14 +15,12 @@ import { throttle } from 'lodash';
 import { useEffect, useRef, useMemo } from 'react';
 
 function Content() {
-	const contentRef = useRef<HTMLDivElement>(null);
-	const mainRef = useRef<HTMLDivElement>(null);
-	const skillsRef = useRef<HTMLDivElement>(null);
-	const referenceRef = useRef<HTMLDivElement>(null);
-	const aboutmeRef = useRef<HTMLDivElement>(null);
-	const contactRef = useRef<HTMLDivElement>(null);
-
-	const count = useSelector((state: RootState) => state.counter.count); // Redux_count load
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	); // nowsection load
+	const direction = useSelector(
+		(state: RootState) => state.sectionHandle.direction
+	); // scroll direction load
 	const dispatch = useDispatch(); // use dispatch
 
 	const onIncrease = () => {
@@ -53,17 +51,17 @@ function Content() {
 			throttle((e) => {
 				if (doubleChk(1010)) {
 					if (e.deltaY < 0) {
-						if (count > 0) {
+						if (nowsection > 0) {
 							onDecrease();
 						}
 					} else {
-						if (count < 4) {
+						if (nowsection < 4) {
 							onIncrease();
 						}
 					}
 				}
 			}, 300),
-		[count]
+		[nowsection]
 	);
 
 	useEffect(() => {
@@ -74,29 +72,51 @@ function Content() {
 	}, [scrollHandler]);
 
 	return (
-		<ContentDIV ref={contentRef} nowSection={count}>
-			<Main ref={mainRef} />
-			<Skills ref={skillsRef} />
-			<Reference ref={referenceRef} />
-			<AboutMe ref={aboutmeRef} />
-			<Contact ref={contactRef} />
-		</ContentDIV>
+		<>
+			<ContentDIV nowSection={nowsection} direction={direction}>
+				<Main />
+				<Skills />
+
+				<AboutMe />
+				<Contact />
+			</ContentDIV>
+			<Reference />
+		</>
 	);
 }
 
-const ContentDIV = styled.div<{ nowSection: number }>`
+const ContentDIV = styled.div<{ nowSection: number; direction: string }>`
 	overflow: visible;
-	position: fixed;
 	height: 100vh;
 	top: 0;
-	transition: all 950ms ease 0s;
 	${(props) =>
-		css`
-			transform: translateY(${-100 * props.nowSection + 'vh'});
-		`};
+		props.nowSection === 1 && props.direction === 'up' // Reference->Skills
+			? css`
+					transform: translateY(${-100 * props.nowSection + 'vh'});
+			  `
+			: props.nowSection === 3 && props.direction === 'down' // Reference->AboutMe
+			? css`
+					transform: translateY(${-100 * (props.nowSection - 1) + 'vh'});
+			  `
+			: props.nowSection === 2 && props.direction === 'up' // AboutMe->Reference
+			? css`
+					transform: translateY(${-100 * 2 + 'vh'});
+			  `
+			: props.nowSection === 2 && props.direction === 'down' // Skills->Reference
+			? css`
+					transform: translateY(${-100 * 1 + 'vh'});
+			  `
+			: props.nowSection < 2
+			? css`
+					transition: all 950ms ease 0s;
+					transform: translateY(${-100 * props.nowSection + 'vh'});
+			  `
+			: css`
+					transition: all 950ms ease 0s;
+					transform: translateY(${-100 * (props.nowSection - 1) + 'vh'});
+			  `}
 	& > div {
 		height: 100vh;
-		position: relative;
 	}
 `;
 

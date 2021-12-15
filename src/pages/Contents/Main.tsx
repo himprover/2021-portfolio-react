@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { forwardRef } from 'react';
 
 import Hwang from 'imgs/main/Hwang.png';
 import { ReactComponent as Polygon1 } from 'imgs/main/polygon1.svg';
@@ -9,32 +8,35 @@ import RedGreenLine from 'components/RedGreenLine';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
-const Main = forwardRef<any>((props, ref) => {
-	const count = useSelector((state: RootState) => state.counter.count);
+function Main() {
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
 	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 	return (
-		<MainDIV ref={ref}>
+		<MainDIV>
 			<RedGreenLine />
-			<Hello nowsection={count} isloading={isLoading}>
+			<Hello nowsection={nowsection} isloading={isLoading}>
 				Hello
 			</Hello>
-			<ImHwang nowsection={count} isloading={isLoading}>
+			<ImHwang nowsection={nowsection} isloading={isLoading}>
 				I'm Hwang
 			</ImHwang>
-			<FETOP nowsection={count} isloading={isLoading}>
+			<FETOP nowsection={nowsection} isloading={isLoading}>
 				FRONT
 			</FETOP>
-			<FEBOTTOM nowsection={count} isloading={isLoading}>
+			<FEBOTTOM nowsection={nowsection} isloading={isLoading}>
 				Developer
 			</FEBOTTOM>
-			<Polygon1Styled nowsection={count} isloading={isLoading} />
-			<Polygon2Styled nowsection={count} isloading={isLoading} />
-			<HwangStyled src={Hwang} nowsection={count} isloading={isLoading} />
+			<Polygon1Styled nowsection={nowsection} isloading={isLoading} />
+			<Polygon2Styled nowsection={nowsection} isloading={isLoading} />
+			<HwangStyled src={Hwang} nowsection={nowsection} isloading={isLoading} />
 		</MainDIV>
 	);
-});
+}
 
 const MainDIV = styled.div`
+	position: relative;
 	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
 `;
 
