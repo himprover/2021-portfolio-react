@@ -23,6 +23,8 @@ function One({ isShow }: { isShow: boolean }) {
 			<UseSkill>
 				<Icon name='React' />
 				<Icon name='Ts' />
+				<Icon name='Html' />
+				<Icon name='Nest' />
 			</UseSkill>
 		</List>
 	);

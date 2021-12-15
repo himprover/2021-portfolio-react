@@ -32,7 +32,7 @@ function Icon({ name }: { name: string }) {
 }
 
 const SvgDIV = styled.div`
-	width: 8%;
+	width: 13%;
 	& > svg {
 		filter: drop-shadow(3px 3px 1px #3a3a3a);
 	}

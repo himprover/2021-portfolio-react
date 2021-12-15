@@ -68,6 +68,8 @@ export const UseSkill = styled.div`
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
+	padding-left: 5%;
+	padding-right: 5%;
 `;
 export const List = styled.div`
 	position: absolute;
