@@ -54,7 +54,10 @@ function Reference() {
 				<Arrow direction='right' onClick={() => slideHandle('right')} />
 			</ArrowDIV>
 			<Light nowsection={nowsection} className={isoff ? 'Off' : ''} />
-			<Light nowsection={nowsection} className={isoff ? 'Sub Off' : 'Sub'} />
+			<Light
+				nowsection={nowsection}
+				className={isoff ? 'Sub Off' : `Sub slide${slide}`}
+			/>
 		</ReferenceDIV>
 	);
 }
@@ -149,6 +152,15 @@ const ListDIV = styled.div<{ nowsection: number }>`
 		display: none;
 	}
 `;
+const slideColorList = [
+	'#0000ff',
+	'#00ffbf',
+	'#6f00ff',
+	'#ff00ea',
+	'#ffffff',
+	'#00ccff',
+	'#00b144',
+];
 
 const Light = styled(LightSVG)<{ nowsection: number }>`
 	position: absolute;
@@ -165,6 +177,11 @@ const Light = styled(LightSVG)<{ nowsection: number }>`
 						animation: ${bright} 1.5s 1s infinite alternate ease-in-out;
 				  `
 				: null}
+
+		${slideColorList.map(
+			// prettier-ignore
+			(color, index) => css`&.slide${index} {filter: drop-shadow(0px 10px 40px ${color}) !important;}`
+		)}
 	}
 	&.Off {
 		display: none;
