@@ -22,6 +22,7 @@ function One({ isShow }: { isShow: boolean }) {
 			</RefComment>
 			<UseSkill>
 				<Icon name='React' />
+				<Icon name='Ts' />
 			</UseSkill>
 		</List>
 	);

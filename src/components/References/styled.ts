@@ -43,7 +43,7 @@ export const RefComment = styled.h3`
 	font-weight: 200;
 	width: 90%;
 	z-index: 1;
-	top: 68%;
+	top: 60%;
 	margin: 0;
 	padding: 1rem;
 	right: 50%;
@@ -59,11 +59,15 @@ export const UseSkill = styled.div`
 	bottom: 1rem;
 	right: 1rem;
 	width: 30%;
-	height: 5%;
+	height: 8%;
 	border-radius: 1000px;
 	background: #ffffff88;
 	backdrop-filter: blur(5px);
 	filter: drop-shadow(5px 5px 2px #000000a7);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 `;
 export const List = styled.div`
 	position: absolute;
