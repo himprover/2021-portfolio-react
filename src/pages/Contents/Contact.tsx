@@ -1,12 +1,17 @@
 import styled from 'styled-components';
-
+import { useSelector } from 'react-redux';
+import { RootState } from 'modules';
 import ContactBG from '../../components/ContactBG';
 
 function Contact() {
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	);
+
 	return (
 		<ContactDIV>
 			<ContactBG />
-			<MainDIV>
+			<MainDIV className={nowsection === 4 ? 'show' : ''}>
 				<RowDIV>
 					<Title>Contact Me</Title>
 				</RowDIV>
@@ -32,6 +37,11 @@ const MainDIV = styled.div`
 	flex-direction: column;
 	text-align: center;
 	text-shadow: 4px 4px 4px #000000;
+	transition: opacity 0.5s 0.5s;
+	opacity: 0;
+	&.show {
+		opacity: 1;
+	}
 `;
 
 const RowDIV = styled.div``;
