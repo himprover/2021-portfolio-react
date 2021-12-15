@@ -38,7 +38,10 @@ function Reference() {
 	return (
 		<ReferenceDIV nowsection={nowsection}>
 			<Title nowsection={nowsection}>Reference</Title>
-			<ArrowDIV nowsection={nowsection} onClick={() => slideHandle('left')}>
+			<ArrowDIV
+				nowsection={nowsection}
+				onClick={() => slideHandle('left')}
+				className={isoff ? 'Off' : ''}>
 				<Arrow className='left' />
 				<Arrow className='left' />
 				<Arrow className='left' />
@@ -52,7 +55,10 @@ function Reference() {
 				<Six isShow={slide === 5 ? true : false} />
 				<Seven isShow={slide === 6 ? true : false} />
 			</ListDIV>
-			<ArrowDIV nowsection={nowsection} onClick={() => slideHandle('right')}>
+			<ArrowDIV
+				nowsection={nowsection}
+				onClick={() => slideHandle('right')}
+				className={isoff ? 'Off' : ''}>
 				<Arrow className='right' />
 				<Arrow className='right' />
 				<Arrow className='right' />
@@ -201,24 +207,6 @@ const Light = styled(LightSVG)<{ nowsection: number }>`
 			  `}
 `;
 
-const ArrowDIV = styled.div<{ nowsection: number }>`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	width: 10vw;
-	opacity: 0;
-	cursor: pointer;
-	z-index: 5;
-	${(props) =>
-		props.nowsection === 2
-			? css`
-					animation: ${opacityShow} 0.5s 1.2s forwards;
-			  `
-			: css`
-					opacity: 1;
-			  `}
-`;
-
 const arrowKeyRight = keyframes`
 	0%{
 		transform:translate(-100%);
@@ -239,25 +227,49 @@ const arrowKeyLeft = keyframes`
 `;
 const Arrow = styled(ArrowSVG)`
 	width: 3rem;
-	display: block;
+	display: none;
 
 	&.right:nth-child(1) {
-		animation: ${arrowKeyRight} 2s infinite;
+		animation: ${arrowKeyRight} 2s 1s infinite;
 	}
 	&.right:nth-child(2) {
-		animation: ${arrowKeyRight} 2s 0.1s infinite;
+		animation: ${arrowKeyRight} 2s 1.1s infinite;
 	}
 	&.right:nth-child(3) {
-		animation: ${arrowKeyRight} 2s 0.2s infinite;
+		animation: ${arrowKeyRight} 2s 1.2s infinite;
 	}
 	&.left:nth-child(1) {
-		animation: ${arrowKeyLeft} 2s 0.2s infinite;
+		animation: ${arrowKeyLeft} 2s 1.2s infinite;
 	}
 	&.left:nth-child(2) {
-		animation: ${arrowKeyLeft} 2s 0.1s infinite;
+		animation: ${arrowKeyLeft} 2s 1.1s infinite;
 	}
 	&.left:nth-child(3) {
-		animation: ${arrowKeyLeft} 2s infinite;
+		animation: ${arrowKeyLeft} 2s 1s infinite;
+	}
+`;
+const ArrowDIV = styled.div<{ nowsection: number }>`
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 10vw;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 5;
+	${(props) =>
+		props.nowsection === 2
+			? css`
+					animation: ${opacityShow} 0.5s 1.2s forwards;
+			  `
+			: css`
+					opacity: 1;
+			  `}
+
+	&.Off {
+		display: none;
+	}
+	svg {
+		display: block;
 	}
 `;
 
