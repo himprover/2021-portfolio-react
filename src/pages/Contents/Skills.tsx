@@ -89,7 +89,8 @@ const leftMoveUndo = keyframes`
 `;
 
 const SkillsDIV = styled.div`
-	background: ${({ theme }: { theme: any }) => theme.skillsBgColor};
+	background: ${({ theme }: { theme: any }) =>
+		theme.skillsBgColor ? theme.skillsBgColor : null};
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -112,9 +113,8 @@ const Logo1DIV = styled.div<{ nowsection: number }>`
 					animation: ${rightMoveUndo} 1s forwards;
 			  `}
 	polygon {
-		fill: #64646465;
-		stroke: #ffffff;
-	}
+		fill: ${({ theme }: { theme: any }) => theme.skillsPentagonBgColor};
+		stroke: ${({ theme }: { theme: any }) => theme.skillsStorkeColor};
 `;
 const Logo2DIV = styled.div<{ nowsection: number }>`
 	display: flex;
@@ -131,8 +131,8 @@ const Logo2DIV = styled.div<{ nowsection: number }>`
 					animation: ${leftMoveUndo} 1s forwards;
 			  `}
 	rect {
-		fill: #ffffff64;
-		stroke: #ffffff;
+		fill: ${({ theme }: { theme: any }) => theme.skillsSquareBgColor};
+		stroke: ${({ theme }: { theme: any }) => theme.skillsStorkeColor};
 	}
 `;
 
@@ -175,6 +175,7 @@ const Ment = styled.h2<{ isBottom?: boolean }>`
 	text-align: center;
 	padding-top: 5%;
 	padding-bottom: 5%;
+	color: ${({ theme }: { theme: any }) => theme.skillsFontColor};
 `;
 
 const Title = styled.h1`
@@ -184,6 +185,7 @@ const Title = styled.h1`
 	margin: 0;
 	left: 3rem;
 	top: 3rem;
+	color: ${({ theme }: { theme: any }) => theme.titleFontColor};
 `;
 
 const HTML5 = styled(HTML5SVG)`

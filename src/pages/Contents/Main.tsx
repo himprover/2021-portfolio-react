@@ -15,6 +15,7 @@ function Main() {
 	const isLoading = useSelector((state: RootState) => state.loader.isLoading);
 	return (
 		<MainDIV>
+			<BG />
 			<RedGreenLine />
 			<Hello nowsection={nowsection} isloading={isLoading}>
 				Hello
@@ -37,7 +38,26 @@ function Main() {
 
 const MainDIV = styled.div`
 	position: relative;
-	background: ${({ theme }: { theme: any }) => theme.mainBgColor};
+`;
+const BG = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	${({ theme }: { theme: any }) =>
+		theme.colorMode === 'dark'
+			? css`
+					opacity: 1;
+					background: ${theme.mainBgColor};
+			  `
+			: css`
+					opacity: 0;
+					background: ${theme.mainBgColor};
+			  `};
 `;
 
 const PolyFadeIn = keyframes`

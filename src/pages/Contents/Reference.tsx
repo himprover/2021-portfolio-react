@@ -131,6 +131,7 @@ const Title = styled.h1<{ nowsection: number }>`
 	left: 3rem;
 	top: 3rem;
 	opacity: 0;
+	color: #ffffff;
 	${(props) =>
 		props.nowsection === 2
 			? css`
@@ -149,6 +150,7 @@ const ListDIV = styled.div<{ nowsection: number }>`
 	width: 140rem;
 	height: 70vh;
 	opacity: 0;
+	color: #ffffff;
 	${(props) =>
 		props.nowsection === 2
 			? css`
