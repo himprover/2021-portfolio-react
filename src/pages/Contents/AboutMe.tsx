@@ -102,6 +102,7 @@ const Title = styled.h1`
 	margin: 0;
 	left: 3rem;
 	top: 3rem;
+	color: ${({ theme }: { theme: any }) => theme.titleFontColor};
 `;
 
 const flash = keyframes`
@@ -122,7 +123,6 @@ const flash = keyframes`
 const FlashBtn = styled.button`
 	position: absolute;
 	cursor: pointer;
-	background: white;
 	border: none;
 	border-radius: 1rem;
 	font-size: 2rem;
@@ -130,6 +130,8 @@ const FlashBtn = styled.button`
 	left: 10rem;
 	top: 20%;
 	z-index: 2;
+	color: ${({ theme }: { theme: any }) => theme.aboutmeFlashColor};
+	background: ${({ theme }: { theme: any }) => theme.aboutmeFlashBgColor};
 `;
 
 const HobbyImg1 = styled.img<{ nowsection: number }>`
@@ -181,13 +183,13 @@ const FlashEffect = styled.div<{ nowsection: number }>`
 	background: white;
 	z-index: 2;
 	opacity: 0;
+
 	${(props) =>
 		props.nowsection === 3
 			? css`
 					animation: ${flash} 0.3s 0.9s ease-in-out forwards;
 			  `
 			: css``}
-
 	&.flashfalse {
 		visibility: hidden !important;
 	}
@@ -196,6 +198,7 @@ const FlashEffect = styled.div<{ nowsection: number }>`
 const MentTitle = styled.h2`
 	font-size: 5.5rem;
 	font-weight: 500;
+	color: ${({ theme }: { theme: any }) => theme.aboutmeMentTitleColor};
 `;
 
 const MentSub = styled.h3`
@@ -203,6 +206,10 @@ const MentSub = styled.h3`
 	font-weight: 200;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+	color: ${({ theme }: { theme: any }) => theme.aboutmeMentSubColor};
+	b {
+		color: ${({ theme }: { theme: any }) => theme.aboutmeMentSubColor};
+	}
 `;
 
 const Info = styled.h3`
@@ -210,6 +217,7 @@ const Info = styled.h3`
 	font-weight: 500;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+	color: ${({ theme }: { theme: any }) => theme.aboutmeInfoColor};
 `;
 
 export default AboutMe;

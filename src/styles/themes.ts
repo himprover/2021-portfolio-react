@@ -24,6 +24,13 @@ export const darkTheme = {
 	skillsPentagonBgColor: '#64646465',
 	skillsSquareBgColor: '#ffffff64',
 	skillsStorkeColor: '#FFFFFF',
+
+	// AboutMe
+	aboutmeMentTitleColor: '#FFFFFF',
+	aboutmeMentSubColor: '#FFFFFF',
+	aboutmeInfoColor: '#FFFFFF',
+	aboutmeFlashBgColor: '#FFFFFF',
+	aboutmeFlashColor: '#000000',
 };
 
 export const lightTheme = {
@@ -45,6 +52,13 @@ export const lightTheme = {
 	skillsPentagonBgColor: '#64646465',
 	skillsSquareBgColor: '#00000064',
 	skillsStorkeColor: '#4c3f36',
+
+	// AboutMe
+	aboutmeMentTitleColor: '#4c3f36',
+	aboutmeMentSubColor: '#000000',
+	aboutmeInfoColor: '#4c3f36',
+	aboutmeFlashBgColor: '#4c3f36',
+	aboutmeFlashColor: '#FFFFFF',
 };
 
 export const theme = {
