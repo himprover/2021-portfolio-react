@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	overflow-x:hidden;
 	overflow-y:hidden;
 	background: ${({ theme }: { theme: any }) => theme.bgColor};
-	color: ${({ theme }: { theme: any }) => theme.fontColor};
+	//color: ${({ theme }: { theme: any }) => theme.fontColor};
 	font-family: 'IBMPlexSansKR', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar { display: none; }
 	* {
 	box-sizing: border-box;
-	//transition: all 0.25s ease-in-out;
+	transition: color 0.5s ease-in-out;
 	}
 	code {
 		font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
