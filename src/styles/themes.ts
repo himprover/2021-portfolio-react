@@ -31,6 +31,11 @@ export const darkTheme = {
 	aboutmeInfoColor: '#FFFFFF',
 	aboutmeFlashBgColor: '#FFFFFF',
 	aboutmeFlashColor: '#000000',
+
+	// Contact
+	contactTitleColor: '#FFFFFF',
+	contactSubTitleColor: '#FFFFFF',
+	contactShadow: '4px 4px 4px #000000',
 };
 
 export const lightTheme = {
@@ -59,6 +64,13 @@ export const lightTheme = {
 	aboutmeInfoColor: '#4c3f36',
 	aboutmeFlashBgColor: '#4c3f36',
 	aboutmeFlashColor: '#FFFFFF',
+
+	// Contact
+	//contactBgColor: 'rgb(254 245 237 / 58%)',
+	contactBgColor: '#00000040',
+	contactTitleColor: '#FFFFFF',
+	contactSubTitleColor: '#FFFFFF',
+	contactShadow: '4px 4px 4px #00000080',
 };
 
 export const theme = {

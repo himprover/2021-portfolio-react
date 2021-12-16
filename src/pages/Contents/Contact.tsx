@@ -16,7 +16,7 @@ function Contact() {
 					<Title>Contact Me</Title>
 				</RowDIV>
 				<RowDIV>
-					<SubTitle>hwang@hwang.com</SubTitle>
+					<SubTitle>joohyun@himprover.kr</SubTitle>
 					<SubTitle>82+ 10 9872 1701</SubTitle>
 				</RowDIV>
 			</MainDIV>
@@ -30,13 +30,15 @@ const ContactDIV = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: ${({ theme }: { theme: any }) =>
+		theme.contactBgColor ? theme.contactBgColor : null};
 `;
 
 const MainDIV = styled.div`
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	text-shadow: 4px 4px 4px #000000;
+	text-shadow: ${({ theme }: { theme: any }) => theme.contactShadow};
 	transition: opacity 0.5s 0.5s;
 	opacity: 0;
 	&.show {
@@ -49,11 +51,13 @@ const RowDIV = styled.div``;
 const Title = styled.h1`
 	font-size: 10rem;
 	font-weight: 500;
+	color: ${({ theme }: { theme: any }) => theme.contactTitleColor};
 `;
 
 const SubTitle = styled.h2`
 	font-size: 5rem;
 	font-weight: 300;
+	color: ${({ theme }: { theme: any }) => theme.contactSubTitleColor};
 `;
 
 export default Contact;
