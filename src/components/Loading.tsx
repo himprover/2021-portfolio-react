@@ -58,13 +58,13 @@ function Loading() {
 	return (
 		<LoadingDIV isLoading={loadState}>
 			<Svg height={vh} width={vw} zIndex={10}>
-				<Circle cx={vw / 2} cy={vh / 2} r={`${vh / 5}`} />
 				<FirstPath d={RedHorizontal} stroke='#A82B11' fill='none' />
 				<SecondPath d={RedVertical1} stroke='#A82B11' fill='none' />
 				<SecondPath d={RedVertical2} stroke='#A82B11' fill='none' />
 				<FirstPath d={GreenHorizontal} stroke='#0A6A56' fill='none' />
 				<SecondPath d={GreenVertical1} stroke='#0A6A56' fill='none' />
 				<SecondPath d={GreenVertical2} stroke='#0A6A56' fill='none' />
+				<Circle cx={vw / 2} cy={vh / 2} r={`${vh / 5}`} />
 			</Svg>
 
 			<Svg height={vh} width={vw} zIndex={9}>
@@ -160,7 +160,6 @@ const Circle = styled.circle`
 	fill: #ffffffe8;
 	transform-origin: center center;
 	opacity: 0;
-	z-index: -1;
 	animation: ${boomAnimation} 0.8s 0.5s ease-in forwards;
 `;
 
