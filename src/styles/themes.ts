@@ -3,6 +3,8 @@ export const darkRedColor: string = '#4D150A';
 export const greenColor: string = '#0A6A56';
 
 export const darkTheme = {
+	colorMode: 'dark',
+
 	bgColor: '#212121', // 기본 설정
 	// fontColor: '#fff', // 기본 설정
 	// HEADER
@@ -39,12 +41,15 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
+	colorMode: 'light',
+
 	bgColor: '#FEF5ED',
 	// fontColor: '#4c3f36',
 	//HEADER
 	headerBgColor: redColor,
 	titleFontColor: '#4c3f36',
 	// MAIN
+	mainBgColor: 'radial-gradient(50% 50% at 50% 50%, #444444 0%, #1B1B1B 100%)',
 	mainHelloColor: '#000000',
 	mainImHColor: '#212121',
 	mainFEColor: '#4c3f36',
