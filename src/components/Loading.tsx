@@ -24,10 +24,8 @@ function Loading() {
 	useEffect(() => {
 		let LoadingSetTime = setTimeout(() => {
 			onSET();
-			console.log('이거');
 			setTimeout(() => {
 				setLoad(false);
-				console.log('요거');
 			}, 1000);
 		}, 1000);
 		return () => clearTimeout(LoadingSetTime);
@@ -60,42 +58,13 @@ function Loading() {
 	return (
 		<LoadingDIV isLoading={loadState}>
 			<Svg height={vh} width={vw} zIndex={10}>
-				<FirstPath
-					d={RedHorizontal}
-					stroke='#A82B11'
-					fill='none'
-					storke-width='1'
-				/>
-				<SecondPath
-					d={RedVertical1}
-					stroke='#A82B11'
-					fill='none'
-					storke-width='1'
-				/>
-				<SecondPath
-					d={RedVertical2}
-					stroke='#A82B11'
-					fill='none'
-					storke-width='1'
-				/>
-				<FirstPath
-					d={GreenHorizontal}
-					stroke='#0A6A56'
-					fill='none'
-					storke-width='1'
-				/>
-				<SecondPath
-					d={GreenVertical1}
-					stroke='#0A6A56'
-					fill='none'
-					storke-width='1'
-				/>
-				<SecondPath
-					d={GreenVertical2}
-					stroke='#0A6A56'
-					fill='none'
-					storke-width='1'
-				/>
+				<FirstPath d={RedHorizontal} stroke='#A82B11' fill='none' />
+				<SecondPath d={RedVertical1} stroke='#A82B11' fill='none' />
+				<SecondPath d={RedVertical2} stroke='#A82B11' fill='none' />
+				<FirstPath d={GreenHorizontal} stroke='#0A6A56' fill='none' />
+				<SecondPath d={GreenVertical1} stroke='#0A6A56' fill='none' />
+				<SecondPath d={GreenVertical2} stroke='#0A6A56' fill='none' />
+				<Circle cx={vw / 2} cy={vh / 2} r={`${vh / 5}`} />
 			</Svg>
 
 			<Svg height={vh} width={vw} zIndex={9}>
@@ -139,6 +108,20 @@ const strokeAnimation = keyframes`
 	}
 `;
 
+const boomAnimation = keyframes`
+	0% {
+		opacity:1;
+		transform:scale(0, 0);
+	}
+	90%{
+		opacity:0;
+	}
+	100% {
+		opacity:0;
+		transform:scale(1, 1);
+	}
+`;
+
 const moveLeft = keyframes`
 	to{transform:translateX(-100vw);}
 `;
@@ -170,6 +153,14 @@ const MovingPath = styled.path<{ direction: string; sNum: number }>`
 const Line = styled.path`
 	stroke-dasharray: 50vw;
 	stroke-dashoffset: 150vw;
+	stroke-width: 2;
+`;
+
+const Circle = styled.circle`
+	fill: #ffffffe8;
+	transform-origin: center center;
+	opacity: 0;
+	animation: ${boomAnimation} 0.8s 0.5s ease-in forwards;
 `;
 
 const FirstPath = styled(Line)`
