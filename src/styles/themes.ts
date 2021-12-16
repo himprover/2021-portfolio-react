@@ -7,6 +7,7 @@ export const darkTheme = {
 	// fontColor: '#fff', // 기본 설정
 	// HEADER
 	headerBgColor: darkRedColor,
+	titleFontColor: '#FFFFFF',
 
 	//	MAIN
 	mainBgColor: 'radial-gradient(50% 50% at 50% 50%, #444444 0%, #1B1B1B 100%)',
@@ -19,6 +20,10 @@ export const darkTheme = {
 
 	// SKILLS
 	skillsBgColor: '#282828',
+	skillsFontColor: '#FFFFFF',
+	skillsPentagonBgColor: '#64646465',
+	skillsSquareBgColor: '#ffffff64',
+	skillsStorkeColor: '#FFFFFF',
 };
 
 export const lightTheme = {
@@ -26,7 +31,7 @@ export const lightTheme = {
 	// fontColor: '#4c3f36',
 	//HEADER
 	headerBgColor: redColor,
-
+	titleFontColor: '#4c3f36',
 	// MAIN
 	mainHelloColor: '#000000',
 	mainImHColor: '#212121',
@@ -34,6 +39,12 @@ export const lightTheme = {
 	mainTextShadow: '4px 4px 10px rgba(0, 0, 0, 0.5)',
 	mainP1Color: '#9c826f',
 	mainP2Color: '#4c3f36',
+
+	// SKILLS
+	skillsFontColor: '#FFFFFF',
+	skillsPentagonBgColor: '#64646465',
+	skillsSquareBgColor: '#00000064',
+	skillsStorkeColor: '#4c3f36',
 };
 
 export const theme = {
