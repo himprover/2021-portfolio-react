@@ -1,6 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
 import { ReactComponent as lightdarkbtnsvg } from 'imgs/header/svg/lightdarkbtn.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'modules';
+import { changeBy } from 'modules/sectionHandle';
 
 interface themeToggle {
 	theme: string;
@@ -8,14 +11,65 @@ interface themeToggle {
 }
 
 function Header({ theme, setTheme }: themeToggle) {
+	const nowsection = useSelector(
+		(state: RootState) => state.sectionHandle.nowsection
+	); // nowsection load
+	const dispatch = useDispatch(); // use dispatch
+
+	const onChange = (payload: { sum: number; direction: string }) => {
+		dispatch(changeBy(payload));
+	};
+	const sectionHandle = (sectionNum: number) => {
+		// section moving handler
+		let tmp = sectionNum - nowsection; // dest section - now section
+		let direction = '';
+		if (tmp > 0) {
+			direction = 'down';
+		} else if (tmp < 0) {
+			direction = 'up';
+		} else if (tmp === 0) {
+			return;
+		}
+		let payload = {
+			sum: tmp,
+			direction: direction,
+		};
+		return onChange(payload);
+	};
+
 	return (
 		<Menu>
 			<ToggleBtn className={theme} onClick={setTheme} />
-			<MenuBtn>Main</MenuBtn>
-			<MenuBtn>Skills</MenuBtn>
-			<MenuBtn>Refernece</MenuBtn>
-			<MenuBtn>AboutMe</MenuBtn>
-			<MenuBtn>Contact</MenuBtn>
+			<MenuBtn
+				onClick={() => {
+					sectionHandle(0);
+				}}>
+				Main
+			</MenuBtn>
+			<MenuBtn
+				onClick={() => {
+					sectionHandle(1);
+				}}>
+				Skills
+			</MenuBtn>
+			<MenuBtn
+				onClick={() => {
+					sectionHandle(2);
+				}}>
+				Refernece
+			</MenuBtn>
+			<MenuBtn
+				onClick={() => {
+					sectionHandle(3);
+				}}>
+				AboutMe
+			</MenuBtn>
+			<MenuBtn
+				onClick={() => {
+					sectionHandle(4);
+				}}>
+				Contact
+			</MenuBtn>
 		</Menu>
 	);
 }
@@ -141,6 +195,9 @@ const ToggleBtn = styled(lightdarkbtnsvg)`
 	}
 `;
 
-const MenuBtn = styled.div``;
+const MenuBtn = styled.div`
+	cursor: pointer;
+	color: white;
+`;
 
 export default Header;
