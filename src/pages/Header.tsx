@@ -11,6 +11,11 @@ function Header({ theme, setTheme }: themeToggle) {
 	return (
 		<Menu>
 			<ToggleBtn className={theme} onClick={setTheme} />
+			<MenuBtn>Main</MenuBtn>
+			<MenuBtn>Skills</MenuBtn>
+			<MenuBtn>Refernece</MenuBtn>
+			<MenuBtn>AboutMe</MenuBtn>
+			<MenuBtn>Contact</MenuBtn>
 		</Menu>
 	);
 }
@@ -32,7 +37,7 @@ const Menu = styled.div`
 	background: ${({ theme }: { theme: any }) => theme.headerBgColor};
 	z-index: 5;
 	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-bottom: 15%;
 `;
 
 const blink = keyframes`
@@ -135,5 +140,7 @@ const ToggleBtn = styled(lightdarkbtnsvg)`
 		}
 	}
 `;
+
+const MenuBtn = styled.div``;
 
 export default Header;
