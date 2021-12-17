@@ -1,9 +1,10 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as lightdarkbtnsvg } from 'imgs/header/svg/lightdarkbtn.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'modules';
 import { changeBy } from 'modules/sectionHandle';
+import { useState, useEffect } from 'react';
 
 interface themeToggle {
 	theme: string;
@@ -11,6 +12,7 @@ interface themeToggle {
 }
 
 function Header({ theme, setTheme }: themeToggle) {
+	const [hover, setHover] = useState(false);
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	); // nowsection load
@@ -19,6 +21,7 @@ function Header({ theme, setTheme }: themeToggle) {
 	const onChange = (payload: { sum: number; direction: string }) => {
 		dispatch(changeBy(payload));
 	};
+
 	const sectionHandle = (sectionNum: number) => {
 		// section moving handler
 		let tmp = sectionNum - nowsection; // dest section - now section
@@ -37,9 +40,15 @@ function Header({ theme, setTheme }: themeToggle) {
 		return onChange(payload);
 	};
 
+	useEffect(() => {
+		setHover(false);
+		console.log('testt');
+		setTimeout(() => setHover(true), 500);
+	}, [theme]);
+
 	return (
 		<Menu>
-			<ToggleBtn className={theme} onClick={setTheme} />
+			<ToggleBtn className={theme} onClick={setTheme} canhover={hover} />
 			<MenuBtn
 				onClick={() => {
 					sectionHandle(0);
@@ -136,7 +145,7 @@ const blink2 = keyframes`
 			}
 `;
 
-const ToggleBtn = styled(lightdarkbtnsvg)`
+const ToggleBtn = styled(lightdarkbtnsvg)<{ canhover: boolean }>`
 	width: 4rem;
 	cursor: pointer;
 	path {
@@ -156,12 +165,17 @@ const ToggleBtn = styled(lightdarkbtnsvg)`
 			opacity: 1;
 			filter: drop-shadow(0px 0px 5px #000000);
 		}
-		&:hover {
-			// blink sun in dark mode
-			.lbbtn-44 {
-				animation: ${blink} 1s forwards;
-			}
-		}
+		${(props) =>
+			props.canhover
+				? css`
+						&:hover {
+							// blink sun in dark mode
+							.lbbtn-44 {
+								animation: ${blink} 1s forwards;
+							}
+						}
+				  `
+				: null}
 	}
 	&.light {
 		.lbbtn-3 {
@@ -186,12 +200,18 @@ const ToggleBtn = styled(lightdarkbtnsvg)`
 			fill: #ffee00;
 			filter: drop-shadow(0px 5px 10px #ffee00);
 		}
-		&:hover {
-			// blink sun in dark mode
-			.lbbtn-44 {
-				animation: ${blink2} 1s forwards;
-			}
-		}
+
+		${(props) =>
+			props.canhover
+				? css`
+						&:hover {
+							// blink sun in dark mode
+							.lbbtn-44 {
+								animation: ${blink2} 1s forwards;
+							}
+						}
+				  `
+				: null}
 	}
 `;
 
