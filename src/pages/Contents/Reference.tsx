@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ReactComponent as LightSVG } from 'imgs/reference/svg/light.svg';
 import { ReactComponent as ArrowSVG } from 'imgs/reference/svg/arrow.svg';
@@ -12,12 +12,15 @@ import Four from 'components/References/Four';
 import Five from 'components/References/Five';
 import Six from 'components/References/Six';
 import Seven from 'components/References/Seven';
+import { throttle } from 'lodash';
 function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
 	);
 	const [slide, setSlide] = useState<number>(0);
 	const [isoff, setOff] = useState<boolean>(false);
+
+	const vw = useRef(0);
 
 	const slideHandle = (direction: string) => {
 		if (direction === 'right') {
@@ -108,7 +111,7 @@ const ReferenceDIV = styled.div<{ nowsection: number }>`
 	align-items: center;
 	top: 0;
 	z-index: 10;
-	width: 1870px;
+	width: calc(100vw - 5rem);
 	height: 100vh;
 	transition: all 0.5s;
 	${(props) =>
