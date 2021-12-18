@@ -1,19 +1,19 @@
 const INCREASE = 'sectionHandle/INCREASE' as const;
 const DECREASE = 'sectionHandle/DECREASE' as const;
-const INCREASE_BY = 'sectionHandle/INCREASE_BY' as const;
+const CHANGE_BY = 'sectionHandle/CHANGE_BY' as const;
 
 export const increase = () => ({ type: INCREASE });
 export const decrease = () => ({ type: DECREASE });
 
-export const increaseBy = (diff: number) => ({
-	type: INCREASE_BY,
+export const changeBy = (diff: { sum: number; direction: string }) => ({
+	type: CHANGE_BY,
 	payload: diff,
 });
 
 type SectionAction =
 	| ReturnType<typeof increase>
 	| ReturnType<typeof decrease>
-	| ReturnType<typeof increaseBy>;
+	| ReturnType<typeof changeBy>;
 
 type SectionState = {
 	nowsection: number;
@@ -34,10 +34,10 @@ function sectionHandle(
 			return { nowsection: state.nowsection + 1, direction: 'down' };
 		case DECREASE:
 			return { nowsection: state.nowsection - 1, direction: 'up' };
-		case INCREASE_BY:
+		case CHANGE_BY:
 			return {
-				nowsection: state.nowsection + action.payload,
-				direction: 'down',
+				nowsection: state.nowsection + action.payload.sum,
+				direction: action.payload.direction,
 			};
 		default:
 			return state;
