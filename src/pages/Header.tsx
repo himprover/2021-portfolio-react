@@ -1,10 +1,12 @@
 import styled, { css, keyframes } from 'styled-components';
-
-import { ReactComponent as lightdarkbtnsvg } from 'imgs/header/svg/lightdarkbtn.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'modules';
 import { changeBy } from 'modules/sectionHandle';
 import { useState, useEffect } from 'react';
+
+import SvgBtn from 'components/SvgBtn';
+
+import { ReactComponent as lightdarkbtnsvg } from 'imgs/header/svg/lightdarkbtn.svg';
 
 interface themeToggle {
 	theme: string;
@@ -42,42 +44,26 @@ function Header({ theme, setTheme }: themeToggle) {
 
 	useEffect(() => {
 		setHover(false);
-		console.log('testt');
 		setTimeout(() => setHover(true), 500);
 	}, [theme]);
 
 	return (
 		<Menu>
 			<ToggleBtn className={theme} onClick={setTheme} canhover={hover} />
-			<MenuBtn
-				onClick={() => {
-					sectionHandle(0);
-				}}>
-				Main
+			<MenuBtn name='Main' onClick={() => sectionHandle(0)}>
+				<SvgBtn name='Main' />
 			</MenuBtn>
-			<MenuBtn
-				onClick={() => {
-					sectionHandle(1);
-				}}>
-				Skills
+			<MenuBtn name='Skills' onClick={() => sectionHandle(1)}>
+				<SvgBtn name='Skills' />
 			</MenuBtn>
-			<MenuBtn
-				onClick={() => {
-					sectionHandle(2);
-				}}>
-				Refernece
+			<MenuBtn name='Reference' onClick={() => sectionHandle(2)}>
+				<SvgBtn name='Reference' />
 			</MenuBtn>
-			<MenuBtn
-				onClick={() => {
-					sectionHandle(3);
-				}}>
-				AboutMe
+			<MenuBtn name='AboutMe' onClick={() => sectionHandle(3)}>
+				<SvgBtn name='AboutMe' />
 			</MenuBtn>
-			<MenuBtn
-				onClick={() => {
-					sectionHandle(4);
-				}}>
-				Contact
+			<MenuBtn name='Contact' onClick={() => sectionHandle(4)}>
+				<SvgBtn name='Contact' />
 			</MenuBtn>
 		</Menu>
 	);
@@ -111,7 +97,7 @@ const blink = keyframes`
 			fill:#000000;}
 	20%{		
 			fill:#817800;}
-	30%{		
+	30%{		 
 			fill:#000000;}
 	40%{		
 			fill:#817800;}
@@ -126,8 +112,7 @@ const blink = keyframes`
 
 const blink2 = keyframes`
 	0%{	
-			fill:#ffee00;
-	}
+			fill:#ffee00;}
 	10%{
 			fill:#ffee00;}
 	20%{		
@@ -215,9 +200,32 @@ const ToggleBtn = styled(lightdarkbtnsvg)<{ canhover: boolean }>`
 	}
 `;
 
-const MenuBtn = styled.div`
+const MenuBtn = styled.div<{ name: string }>`
 	cursor: pointer;
-	color: white;
+	position: relative;
+	path {
+		fill: #fff;
+	}
+
+	&::after {
+		font-size: 1.2rem;
+		color: white;
+		content: '${(props) => props.name}';
+		position: absolute;
+		top: 50%;
+		left: 4rem;
+		transform: translateY(-50%);
+		background: #000000a7;
+		padding: 0.5rem;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	&:hover {
+		&::after {
+			opacity: 1;
+		}
+	}
 `;
 
 export default Header;
