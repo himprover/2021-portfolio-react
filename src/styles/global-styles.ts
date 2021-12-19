@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
 
 	body {
 	margin: 0;
-	padding-left: 5rem;
+	padding-left: 50px;
 	overflow-x:hidden;
 	overflow-y:hidden;
 	background: ${({ theme }: { theme: any }) => theme.bgColor};
@@ -24,68 +24,33 @@ const GlobalStyle = createGlobalStyle`
 
 	/* Extra small devices (phones, 600px and down) */
 	@media only screen and (max-width: 600px) {
-
+html{
+			font-size:34%;
+		}
 	}
 	/* Small devices (portrait tablets and large phones, 600px and up) */
 	@media only screen and (min-width: 600px) {
-
+html{
+			font-size:37.5%;
+		}
 	}
 	/* Medium devices (landscape tablets, 768px and up) */
 	@media only screen and (min-width: 768px) {
-
+html{
+			font-size:43.8%;
+		}
 	}
 	/* Large devices (laptops/desktops, 992px and up) */
 	@media only screen and (min-width: 992px) {
-
+		html{
+			font-size:50%;
+		}
 	}
-		/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1000px) {
-		html{
-			font-size:34%;
-		}
-		
-		/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1100px) {
-		html{
-			font-size:37%;
-		}
-		
 
 		/* Extra large devices (large laptops and desktops, 1200px and up) */
 	@media only screen and (min-width: 1200px) {
 		html{
-			font-size:40%;
-		}
-		
-		/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1300px) {
-		html{
-			font-size:46%;
-		}
-		
-	/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1400px) {
-		html{
-			font-size:49%;
-		}
-		 
-	}
-
-	@media only screen and (min-width: 1500px) {
-		html{
-			font-size:52%;
-		}
-	}
-	/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1600px) {
-		html{
-			font-size:54%;
-		}
-	}
-	/* Extra large devices (large laptops and desktops, 1200px and up) */
-	@media only screen and (min-width: 1700px) {
-		html{
-			font-size:58%;
+			font-size:56.3%;
 		}
 	}
 	@media only screen and (min-width: 1800px) {

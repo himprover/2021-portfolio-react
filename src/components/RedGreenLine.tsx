@@ -15,7 +15,6 @@ function RedGreenLine() {
 		<LineDIV>
 			<Line
 				cssProps={RB}
-				viewBox='0 0 60 3000'
 				x1={3}
 				x2={3}
 				y2={300}
@@ -24,7 +23,6 @@ function RedGreenLine() {
 			/>
 			<Line
 				cssProps={GB}
-				viewBox='0 0 60 3000'
 				x1={3}
 				x2={3}
 				y2={300}
@@ -33,7 +31,6 @@ function RedGreenLine() {
 			/>
 			<Line
 				cssProps={RS}
-				viewBox='0 0 10 3000'
 				x1={0.5}
 				x2={0.5}
 				y2={300}
@@ -42,7 +39,6 @@ function RedGreenLine() {
 			/>
 			<Line
 				cssProps={GS}
-				viewBox='0 0 10 3000'
 				x1={0.5}
 				x2={0.5}
 				y2={300}

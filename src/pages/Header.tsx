@@ -219,11 +219,13 @@ const MenuBtn = styled.div<{ name: string }>`
 		padding: 0.5rem;
 		opacity: 0;
 		transition: opacity 0.3s;
+		visibility: hidden;
 	}
 
 	&:hover {
 		&::after {
 			opacity: 1;
+			visibility: visible;
 		}
 	}
 `;

@@ -93,6 +93,8 @@ const MentArea = styled.div<{ nowsection: number }>`
 					transition: opacity 1s;
 					opacity: 0;
 			  `};
+
+	word-break: keep-all;
 `;
 
 const Title = styled.h1`
@@ -139,7 +141,7 @@ const HobbyImg1 = styled.img<{ nowsection: number }>`
 	left: 10rem;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 60rem;
+	width: 30%;
 	z-index: 1;
 	filter: drop-shadow(5px 5px 5px #00000070);
 	opacity: 0;
@@ -160,7 +162,7 @@ const HobbyImg2 = styled.img<{ nowsection: number }>`
 	left: 18rem;
 	top: 50%;
 	transform: translateY(-40.5%);
-	width: 55rem;
+	width: 27%;
 	z-index: 0;
 	filter: drop-shadow(5px 5px 5px #00000070);
 	opacity: 0;

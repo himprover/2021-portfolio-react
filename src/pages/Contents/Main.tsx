@@ -167,6 +167,9 @@ const FE = styled.h1`
 	font-weight: 700;
 	color: ${({ theme }: { theme: any }) => theme.mainFEColor};
 	text-shadow: ${({ theme }: { theme: any }) => theme.mainTextShadow};
+	&:hover {
+		z-index: 5;
+	}
 `;
 
 const FETOP = styled(FE)<{ nowsection: number; isloading: boolean }>`
@@ -181,6 +184,9 @@ const FETOP = styled(FE)<{ nowsection: number; isloading: boolean }>`
 			: css`
 					animation: ${rightOut} 1s forwards;
 			  `}
+	&:hover {
+		z-index: 5;
+	}
 `;
 
 const FEBOTTOM = styled(FE)<{ nowsection: number; isloading: boolean }>`
@@ -203,9 +209,10 @@ const Polygon1Styled = styled(Polygon1)<{
 	isloading: boolean;
 }>`
 	position: absolute;
-	right: 30rem;
-	top: 20rem;
+	top: 25rem;
+	right: 33rem;
 	width: 65.7rem;
+	height: auto;
 	z-index: 1;
 	opacity: 0;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
@@ -221,20 +228,24 @@ const Polygon1Styled = styled(Polygon1)<{
 					animation: ${fadeOut} 1s backwards;
 			  `}
 `;
+
 const Polygon2Styled = styled(Polygon2)<{
 	nowsection: number;
 	isloading: boolean;
 }>`
 	position: absolute;
-	right: 27.9rem;
-	top: 33rem;
+	top: 44.3rem;
+	right: 30.5rem;
+	transform-origin: 0 100%;
 	width: 55rem;
+	height: auto;
 	z-index: 0;
 	opacity: 0;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
 	path {
 		fill: ${({ theme }: { theme: any }) => theme.mainP2Color};
 	}
+
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
@@ -246,8 +257,9 @@ const Polygon2Styled = styled(Polygon2)<{
 `;
 const HwangStyled = styled.img<{ nowsection: number; isloading: boolean }>`
 	position: absolute;
-	right: 32.1rem;
-	top: -1rem;
+	width: 67rem;
+	top: -2rem;
+	right: 32rem;
 	z-index: 3;
 	opacity: 0;
 	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));

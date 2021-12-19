@@ -101,7 +101,7 @@ const SkillsDIV = styled.div`
 const Logo1DIV = styled.div<{ nowsection: number }>`
 	display: flex;
 	justify-content: space-between;
-	width: 170rem;
+	width: 90%;
 	margin: 0 auto;
 	z-index: 2;
 	${(props) =>
@@ -119,7 +119,7 @@ const Logo1DIV = styled.div<{ nowsection: number }>`
 const Logo2DIV = styled.div<{ nowsection: number }>`
 	display: flex;
 	justify-content: space-between;
-	width: 110rem;
+	width: 60%;
 	margin: 0 auto;
 	z-index: 2;
 	${(props) =>
@@ -185,6 +185,7 @@ const Title = styled.h1`
 	margin: 0;
 	left: 3rem;
 	top: 3rem;
+	z-index: 5;
 	color: ${({ theme }: { theme: any }) => theme.titleFontColor};
 `;
 
