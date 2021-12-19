@@ -17,11 +17,11 @@ function AboutMe() {
 	return (
 		<AboutMeDIV>
 			<Title>About Me</Title>
+			<FlashEffect nowsection={nowsection} className={`flash${flash}`} />
 			<FlashBtn onClick={flashHandler}>
 				{flash ? '플래시끄기' : '플래시켜기'}
 			</FlashBtn>
 			<ImgArea>
-				<FlashEffect nowsection={nowsection} className={`flash${flash}`} />
 				<HobbyImg1 src={HobbyPng1} nowsection={nowsection} />
 				<HobbyImg2 src={HobbyPng2} nowsection={nowsection} />
 			</ImgArea>
@@ -52,16 +52,23 @@ function AboutMe() {
 	);
 }
 
+const ImgArea = styled.div`
+	position: relative;
+	display: flex;
+	width: 40%;
+`;
+
 const AboutMeDIV = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-`;
-
-const ImgArea = styled.div`
-	display: flex;
-	width: 40%;
+	@media only screen and (max-width: 880px) {
+		flex-direction: column;
+		${ImgArea} {
+			display: none;
+		}
+	}
 `;
 
 const imgkeyback = keyframes`
@@ -93,7 +100,9 @@ const MentArea = styled.div<{ nowsection: number }>`
 					transition: opacity 1s;
 					opacity: 0;
 			  `};
-
+	@media only screen and (max-width: 880px) {
+		width: 80%;
+	}
 	word-break: keep-all;
 `;
 
@@ -141,7 +150,8 @@ const HobbyImg1 = styled.img<{ nowsection: number }>`
 	left: 10rem;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 30%;
+	width: 70%;
+	min-width: 272.69px;
 	z-index: 1;
 	filter: drop-shadow(5px 5px 5px #00000070);
 	opacity: 0;
@@ -162,7 +172,8 @@ const HobbyImg2 = styled.img<{ nowsection: number }>`
 	left: 18rem;
 	top: 50%;
 	transform: translateY(-40.5%);
-	width: 27%;
+	width: 67%;
+	min-width: 245.42px;
 	z-index: 0;
 	filter: drop-shadow(5px 5px 5px #00000070);
 	opacity: 0;
@@ -183,7 +194,7 @@ const FlashEffect = styled.div<{ nowsection: number }>`
 	top: 0;
 	left: 0;
 	background: white;
-	z-index: 2;
+	z-index: 5;
 	opacity: 0;
 
 	${(props) =>

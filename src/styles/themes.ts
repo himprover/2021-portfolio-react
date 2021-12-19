@@ -2,6 +2,13 @@ export const redColor: string = '#A82B11';
 export const darkRedColor: string = '#4D150A';
 export const greenColor: string = '#0A6A56';
 
+export const smallPhone: string = '600px';
+export const defaultPhone: string = '768px';
+export const smallLaptop: string = '992px';
+export const defaultLaptop: string = '1200px';
+export const defaultDesktop: string = '1800px';
+export const bigDesktop: string = '2000px';
+
 export const darkTheme = {
 	colorMode: 'dark',
 
