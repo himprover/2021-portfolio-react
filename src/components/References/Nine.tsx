@@ -5,9 +5,9 @@ import Icon from './Icon';
 
 function Nine({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>그 외 개발 페이지</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				많은 기능이 없는 단순 랜딩, 안내, 신청 페이지 개발 및 사내 지출결의
 				시스템 리뉴얼. 개발에 익숙해지는 기회가 되었다.

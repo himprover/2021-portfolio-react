@@ -88,7 +88,7 @@ export const List = styled.div`
 		animation: ${SkillShow} 0.5s 1s ease forwards;
 	}
 
-	&.nowShow {
+	&.notShow {
 		display: none;
 	}
 `;

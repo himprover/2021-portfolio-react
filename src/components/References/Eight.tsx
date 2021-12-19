@@ -5,9 +5,9 @@ import Icon from './Icon';
 
 function Eight({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>2021 공개 SW 페스티벌 참여</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				2021 공개 SW 페스티벌에 개인팀으로 모바일 앱 부문 참여.
 				<br />
