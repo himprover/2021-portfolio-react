@@ -107,8 +107,9 @@ const ReferenceDIV = styled.div<{ nowsection: number }>`
 	position: fixed;
 	align-items: center;
 	top: 0;
+	left: 50px;
 	z-index: 10;
-	width: 1870px;
+	width: calc(100vw - 50px);
 	height: 100vh;
 	transition: all 0.5s;
 	${(props) =>

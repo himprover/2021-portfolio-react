@@ -89,6 +89,7 @@ const ContentDIV = styled.div<{ nowSection: number; direction: string }>`
 	overflow: visible;
 	height: 100vh;
 	top: 0;
+	left: 50px;
 	${(props) =>
 		props.nowSection === 1 && props.direction === 'up' // Reference->Skills
 			? css`

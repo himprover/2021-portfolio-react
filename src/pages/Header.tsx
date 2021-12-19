@@ -81,12 +81,12 @@ const Menu = styled.div`
 	bottom: 0;
 	left: 0;
 	right: auto;
-	width: 5rem;
+	width: 50px;
 	height: 100vh;
 	background: ${({ theme }: { theme: any }) => theme.headerBgColor};
-	z-index: 5;
-	padding-top: 1rem;
-	padding-bottom: 15%;
+	z-index: 11;
+	padding-top: 15vh;
+	padding-bottom: 15vh;
 `;
 
 const blink = keyframes`
@@ -131,7 +131,7 @@ const blink2 = keyframes`
 `;
 
 const ToggleBtn = styled(lightdarkbtnsvg)<{ canhover: boolean }>`
-	width: 4rem;
+	width: 40px;
 	cursor: pointer;
 	path {
 		transition: all 0.5s ease-in-out;
@@ -209,7 +209,7 @@ const MenuBtn = styled.div<{ name: string }>`
 
 	&::after {
 		font-size: 1.2rem;
-		color: white;
+		color: #fff;
 		content: '${(props) => props.name}';
 		position: absolute;
 		top: 50%;
@@ -219,11 +219,13 @@ const MenuBtn = styled.div<{ name: string }>`
 		padding: 0.5rem;
 		opacity: 0;
 		transition: opacity 0.3s;
+		visibility: hidden;
 	}
 
 	&:hover {
 		&::after {
 			opacity: 1;
+			visibility: visible;
 		}
 	}
 `;

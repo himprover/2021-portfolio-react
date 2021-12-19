@@ -58,6 +58,11 @@ const SubTitle = styled.h2`
 	font-size: 5rem;
 	font-weight: 300;
 	color: ${({ theme }: { theme: any }) => theme.contactSubTitleColor};
+	-ms-user-select: text;
+	-moz-user-select: -moz-text;
+	-khtml-user-select: text;
+	-webkit-user-select: text;
+	user-select: text;
 `;
 
 export default Contact;

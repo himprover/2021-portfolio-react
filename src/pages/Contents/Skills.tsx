@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
+import { defaultLaptop } from 'styles/themes';
 
 import { ReactComponent as HTML5SVG } from '../../imgs/skills/svg/HTML5.svg';
 import { ReactComponent as ES6SVG } from '../../imgs/skills/svg/ES6.svg';
@@ -96,14 +97,32 @@ const SkillsDIV = styled.div`
 	justify-content: space-around;
 	overflow: hidden;
 	position: relative;
+	@media only screen and (max-width: 680px) {
+		flex-direction: row;
+		align-items: center;
+	}
 `;
 
 const Logo1DIV = styled.div<{ nowsection: number }>`
 	display: flex;
+	flex-direction:row;
+	flex-flow:row wrap;
 	justify-content: space-between;
-	width: 170rem;
+	width: 90%;
 	margin: 0 auto;
 	z-index: 2;
+	@media only screen and (max-width: 1250px) {
+		&{
+			width:60%;
+		}
+	}
+	@media only screen and (max-width: 680px) {
+		&{
+			width:40%;
+			height: 90%;
+			flex-direction:column;
+		}
+	}
 	${(props) =>
 		props.nowsection === 1
 			? css`
@@ -119,9 +138,20 @@ const Logo1DIV = styled.div<{ nowsection: number }>`
 const Logo2DIV = styled.div<{ nowsection: number }>`
 	display: flex;
 	justify-content: space-between;
-	width: 110rem;
+	width: 60%;
 	margin: 0 auto;
 	z-index: 2;
+	@media only screen and (max-width: 1250px) {
+		& {
+		}
+	}
+	@media only screen and (max-width: 680px) {
+		& {
+			flex-direction: column;
+			width: 40%;
+			height: 80%;
+		}
+	}
 	${(props) =>
 		props.nowsection === 1
 			? css`
@@ -185,10 +215,13 @@ const Title = styled.h1`
 	margin: 0;
 	left: 3rem;
 	top: 3rem;
+	z-index: 5;
 	color: ${({ theme }: { theme: any }) => theme.titleFontColor};
 `;
 
 const HTML5 = styled(HTML5SVG)`
+	margin: 0 auto;
+	display: block;
 	width: 30rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -198,6 +231,8 @@ const HTML5 = styled(HTML5SVG)`
 `;
 
 const ES6 = styled(ES6SVG)`
+	margin: 0 auto;
+	display: block;
 	width: 30rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -207,6 +242,8 @@ const ES6 = styled(ES6SVG)`
 `;
 
 const REACT = styled(REACTSVG)`
+	margin: 0 auto;
+	display: block;
 	width: 30rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -216,6 +253,8 @@ const REACT = styled(REACTSVG)`
 `;
 
 const TS = styled(TSSVG)`
+	margin: 0 auto;
+	display: block;
 	width: 30rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -225,6 +264,8 @@ const TS = styled(TSSVG)`
 `;
 
 const NEST = styled(NESTSVG)`
+	margin: 0 auto;
+	display: block;
 	width: 20rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -234,6 +275,8 @@ const NEST = styled(NESTSVG)`
 `;
 
 const NODE = styled(NODESVG)`
+	margin: 0 auto;
+	display: block;
 	width: 20rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;
@@ -243,6 +286,8 @@ const NODE = styled(NODESVG)`
 `;
 
 const PHP = styled(PHPSVG)`
+	margin: 0 auto;
+	display: block;
 	width: 20rem;
 	filter: drop-shadow(42px 46px 0px rgba(0, 0, 0, 0.25));
 	z-index: 2;

@@ -28,13 +28,38 @@ const svgHandle = (name: string) => {
 };
 
 function Icon({ name }: { name: string }) {
-	return <SvgDIV>{svgHandle(name)}</SvgDIV>;
+	return <SvgDIV name={name}>{svgHandle(name)}</SvgDIV>;
 }
 
-const SvgDIV = styled.div`
+const SvgDIV = styled.div<{ name: string }>`
 	width: 13%;
+	position: relative;
 	& > svg {
 		filter: drop-shadow(3px 3px 1px #3a3a3a);
+	}
+
+	&::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		color: white;
+		background: #000000bb;
+		content: '${(props) => props.name}';
+		z-index: 110;
+		font-size: 1.3rem;
+		border-radius: 2rem;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+	&:hover {
+		&::after {
+			opacity: 1;
+		}
 	}
 `;
 
