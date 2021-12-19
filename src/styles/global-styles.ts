@@ -11,7 +11,13 @@ import {
 
 const GlobalStyle = createGlobalStyle`
 	${normalize}
-
+	html{
+		  -ms-user-select: none; 
+			-moz-user-select: -moz-none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+	}
 	body {
 	margin: 0;
 	padding-left: 50px;
