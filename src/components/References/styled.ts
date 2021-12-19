@@ -37,6 +37,7 @@ export const RefImg = styled.img`
 	object-fit: cover;
 `;
 export const RefComment = styled.h3`
+	word-break: keep-all;
 	position: absolute;
 	font-size: 2.5rem;
 	line-height: 3.5rem;
