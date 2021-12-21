@@ -17,7 +17,7 @@
 ### - Backend Skills
 
 - Nest.js
-- express
+- Express
 - Node.js
 - php
 
