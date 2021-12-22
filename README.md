@@ -11,7 +11,7 @@
 ### - Frontend Skills
 
 - React.js
-- Javascript (es6)
+- Javascript (es6+)
 - Jquery
 
 ### - Backend Skills
