@@ -65,12 +65,20 @@ const PolyFadeIn = keyframes`
 		opacity:0;
 		transform-origin : 0 100%;
 		transform:rotate(-15deg);
+		@media only screen and (max-width: 512px) {
+		transform: rotate(-15deg) translateX(30rem);
+		}
+	}
+		
 	} 1%{ 
 		opacity:1;
 	} 100% {
 		opacity:1;
 		transform-origin : 0 100%;
 		transform:rotate(0);
+		@media only screen and (max-width: 512px) {
+		transform: rotate(0) translateX(30rem);
+		}
 	}
 `;
 
@@ -227,6 +235,9 @@ const Polygon1Styled = styled(Polygon1)<{
 			: css`
 					animation: ${fadeOut} 1s backwards;
 			  `}
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 `;
 
 const Polygon2Styled = styled(Polygon2)<{
@@ -245,7 +256,9 @@ const Polygon2Styled = styled(Polygon2)<{
 	path {
 		fill: ${({ theme }: { theme: any }) => theme.mainP2Color};
 	}
-
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
@@ -271,6 +284,9 @@ const HwangStyled = styled.img<{ nowsection: number; isloading: boolean }>`
 			: css`
 					animation: ${fadeOut} 1s backwards;
 			  `}
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 `;
 
 export default Main;
