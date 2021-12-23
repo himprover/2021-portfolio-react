@@ -38,10 +38,8 @@ function Content() {
 		const nowDate = Date.now();
 		if (nowDate - lastTimestamp.current > time) {
 			lastTimestamp.current = nowDate;
-			console.log(nowDate - lastTimestamp.current);
 			return true;
 		} else {
-			console.log(nowDate - lastTimestamp.current);
 			return false;
 		}
 	};
