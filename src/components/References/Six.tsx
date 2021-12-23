@@ -5,9 +5,9 @@ import Icon from './Icon';
 
 function Six({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>사이버 보안 챌린지 2020 : 본선 실시간 리더보드</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				'사이버 보안 챌린지 : 2020'의 본선 기술경연 점수를 실시간으로 보여주는
 				단일 페이지.

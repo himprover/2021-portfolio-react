@@ -37,6 +37,7 @@ export const RefImg = styled.img`
 	object-fit: cover;
 `;
 export const RefComment = styled.h3`
+	word-break: keep-all;
 	position: absolute;
 	font-size: 2.5rem;
 	line-height: 3.5rem;
@@ -87,7 +88,7 @@ export const List = styled.div`
 		animation: ${SkillShow} 0.5s 1s ease forwards;
 	}
 
-	&.nowShow {
+	&.notShow {
 		display: none;
 	}
 `;
