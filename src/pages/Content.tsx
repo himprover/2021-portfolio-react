@@ -75,9 +75,20 @@ function Content() {
 	const touchEndHandler = useMemo(
 		() => (e: any) => {
 			touchEnd.current = e.changedTouches[0].pageY;
-			if (touchStart.current > touchEnd.current && nowsection !== 4) {
+			let delta = touchStart.current - touchEnd.current;
+			delta = delta > 0 ? delta : delta * -1;
+
+			if (
+				touchStart.current > touchEnd.current &&
+				delta > 50 &&
+				nowsection !== 4
+			) {
 				onIncrease();
-			} else if (touchStart.current < touchEnd.current && nowsection !== 0) {
+			} else if (
+				touchStart.current < touchEnd.current &&
+				delta > 50 &&
+				nowsection !== 0
+			) {
 				onDecrease();
 			}
 			return;
