@@ -31,6 +31,9 @@ function Content() {
 		dispatch(decrease());
 	};
 
+	const touchStart = useRef<number>(0);
+	const touchEnd = useRef<number>(0);
+
 	const lastTimestamp = useRef<number>(Date.now());
 
 	// scrollTimeChk
@@ -61,6 +64,40 @@ function Content() {
 			}, 300),
 		[nowsection]
 	);
+
+	const touchStartHandler = useMemo(
+		() => (e: any) => {
+			touchStart.current = e.touches[0].pageY;
+			return;
+		},
+		[touchStart]
+	);
+	const touchEndHandler = useMemo(
+		() => (e: any) => {
+			touchEnd.current = e.changedTouches[0].pageY;
+			if (touchStart.current > touchEnd.current && nowsection !== 4) {
+				onIncrease();
+			} else if (touchStart.current < touchEnd.current && nowsection !== 0) {
+				onDecrease();
+			}
+			return;
+		},
+		[touchEnd, nowsection]
+	);
+
+	useEffect(() => {
+		window.addEventListener('touchstart', touchStartHandler);
+		return () => {
+			window.removeEventListener('touchstart', touchStartHandler);
+		};
+	}, [touchStartHandler]);
+
+	useEffect(() => {
+		window.addEventListener('touchend', touchEndHandler);
+		return () => {
+			window.removeEventListener('touchend', touchEndHandler);
+		};
+	}, [touchEndHandler]);
 
 	useEffect(() => {
 		window.addEventListener('wheel', scrollHandler);
