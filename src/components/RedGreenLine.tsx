@@ -53,7 +53,9 @@ const LineDIV = styled.div`
 	position: relative;
 	width: 100%;
 	height: 200vh;
-	overflow: hidden;
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 `;
 const rightIn = keyframes`
 	0%{transform:rotate(45deg) translate(0,-500rem);}

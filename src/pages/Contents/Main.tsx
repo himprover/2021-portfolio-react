@@ -65,14 +65,31 @@ const PolyFadeIn = keyframes`
 		opacity:0;
 		transform-origin : 0 100%;
 		transform:rotate(-15deg);
+
+		
 	} 1%{ 
 		opacity:1;
 	} 100% {
 		opacity:1;
 		transform-origin : 0 100%;
 		transform:rotate(0);
+
 	}
 `;
+
+const PolyFadeInMedia = keyframes`
+	0% {
+		opacity:0;
+		transform-origin : 0 100%;
+		transform: rotate(-15deg) translateX(30rem);
+	}
+	 1%{ 
+		opacity:1;
+	} 100% {
+		opacity:1;
+		transform-origin : 0 100%;
+		transform: rotate(0) translateX(30rem);
+	}`;
 
 const fadeIn = keyframes`
 	0% {
@@ -227,6 +244,9 @@ const Polygon1Styled = styled(Polygon1)<{
 			: css`
 					animation: ${fadeOut} 1s backwards;
 			  `}
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 `;
 
 const Polygon2Styled = styled(Polygon2)<{
@@ -249,7 +269,13 @@ const Polygon2Styled = styled(Polygon2)<{
 	${(props) =>
 		props.nowsection === 0 && !props.isloading
 			? css`
-					animation: ${PolyFadeIn} 1s 2.5s forwards;
+					@media only screen and (max-width: 512px) {
+						transform: translateX(30rem);
+						animation: ${PolyFadeInMedia} 1s 2.5s forwards;
+					}
+					@media only screen and (min-width: 513px) {
+						animation: ${PolyFadeIn} 1s 2.5s forwards;
+					}
 			  `
 			: css`
 					animation: ${fadeOut} 1s backwards;
@@ -271,6 +297,9 @@ const HwangStyled = styled.img<{ nowsection: number; isloading: boolean }>`
 			: css`
 					animation: ${fadeOut} 1s backwards;
 			  `}
+	@media only screen and (max-width: 512px) {
+		transform: translateX(30rem);
+	}
 `;
 
 export default Main;

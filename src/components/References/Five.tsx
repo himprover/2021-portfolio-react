@@ -5,9 +5,9 @@ import Imgsrc from 'imgs/reference/png/Five.png';
 
 function Five({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>R&D형 데이터셋 챌린지 플랫폼 페이지</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				회사 자체 제작 플랫폼 (R&D형 데이터셋 경연 챌린지 플랫폼) 페이지.
 				<br />

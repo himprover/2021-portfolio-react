@@ -5,9 +5,9 @@ import Icon from './Icon';
 
 function Seven({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>개인 프론트엔드 포트폴리오 페이지</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				React의 장점을 깨닫고 포트폴리오 관리를 위해 가장 최근에 개발한 페이지.
 				<br />

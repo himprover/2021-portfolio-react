@@ -5,9 +5,10 @@ import Icon from './Icon';
 
 function Three({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>2021 사이버보안 AI·빅데이터 활용 경진대회 메인 홈페이지</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
+
 			<RefComment>
 				'2021 사이버보안 AI·빅데이터 활용 경진대회'의 메인 홈페이지.
 				<br />

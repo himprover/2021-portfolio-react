@@ -12,6 +12,8 @@ import Four from 'components/References/Four';
 import Five from 'components/References/Five';
 import Six from 'components/References/Six';
 import Seven from 'components/References/Seven';
+import Eight from 'components/References/Eight';
+import Nine from 'components/References/Nine';
 function Reference() {
 	const nowsection = useSelector(
 		(state: RootState) => state.sectionHandle.nowsection
@@ -21,12 +23,12 @@ function Reference() {
 
 	const slideHandle = (direction: string) => {
 		if (direction === 'right') {
-			slide === 6
-				? setSlide((slide) => slide - 6)
+			slide === 8
+				? setSlide((slide) => slide - 8)
 				: setSlide((slide) => slide + 1);
 		} else {
 			slide === 0
-				? setSlide((slide) => slide + 6)
+				? setSlide((slide) => slide + 8)
 				: setSlide((slide) => slide - 1);
 		}
 		setTimeout(() => {
@@ -54,6 +56,8 @@ function Reference() {
 				<Five isShow={slide === 4 ? true : false} />
 				<Six isShow={slide === 5 ? true : false} />
 				<Seven isShow={slide === 6 ? true : false} />
+				<Eight isShow={slide === 7 ? true : false} />
+				<Nine isShow={slide === 8 ? true : false} />
 			</ListDIV>
 			<ArrowDIV
 				nowsection={nowsection}

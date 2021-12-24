@@ -5,9 +5,9 @@ import Icon from './Icon';
 
 function Two({ isShow }: { isShow: boolean }) {
 	return (
-		<List className={isShow ? '' : 'nowShow'}>
+		<List className={isShow ? '' : 'notShow'}>
 			<Title>사이버 보안 챌린지 : 2021 메인 홈페이지</Title>
-			<RefImg src={Imgsrc} />
+			<RefImg src={isShow ? Imgsrc : ''} />
 			<RefComment>
 				'사이버 보안 챌린지 : 2021'의 메인 홈페이지.
 				<br />
