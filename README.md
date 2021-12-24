@@ -19,7 +19,7 @@
 - Nest.js
 - Express
 - Node.js
-- php
+- Php
 
 ### - Plus Skills
 
