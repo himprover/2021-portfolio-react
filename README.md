@@ -1,6 +1,6 @@
 # 🖐<br>Joo-hyun's Portfolio
 
-#### hwang.improver@gmail.com
+#### joohyun@himprover.kr
 
 ---
 <br>
