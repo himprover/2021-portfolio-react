@@ -1,8 +1,5 @@
 # 🖐<br>Joo-hyun's Portfolio
 
-# ----Refactoring (~1/1)----
-
-
 #### joohyun@himprover.kr
 
 ---
