@@ -39,7 +39,7 @@ function AboutMe() {
 					알아가는 행위를 즐기며, 그 만큼 <b>노는 것</b>도 좋아합니다.
 				</MentSub>
 				<MentSub>
-					<b>게으른 성격</b>으로, <b>최고의 효율</b>을 좋아합니다.
+					항상 <b>효율적인 방식</b>을 좋아합니다.
 				</MentSub>
 				<MentSub>여행·사진, 운전이 취미며 수영을 좋아합니다.</MentSub>
 				<br />
